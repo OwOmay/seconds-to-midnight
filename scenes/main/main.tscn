@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://43vfe3roa27u"]
+
+[ext_resource type="Texture2D" uid="uid://blcdpsikq0yy4" path="res://assets/newspaper/page1.png" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://b86jfeu114dxg" path="res://scenes/main/main.gd" id="1_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://uf8a0qg28q2d" path="res://scenes/main/click_zone.tscn" id="2_iuonh"]
+[ext_resource type="Texture2D" uid="uid://bku5nhmoy2vud" path="res://assets/newspaper/page2.png" id="3_k2fmo"]
+
+[node name="Main" type="Node2D" unique_id=113563091 node_paths=PackedStringArray("pages")]
+script = ExtResource("1_l3cfh")
+pages = [NodePath("Page1"), NodePath("Page2")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1722359764]
+
+[node name="Page1" type="Sprite2D" parent="." unique_id=673180458]
+visible = false
+texture = ExtResource("1_hyk8p")
+
+[node name="ClickZone" parent="Page1" unique_id=690649880 instance=ExtResource("2_iuonh")]
+position = Vector2(-183, -190)
+score = 10.0
+area = Vector2(227.39, 143.08)
+
+[node name="ClickZone2" parent="Page1" unique_id=1194052585 instance=ExtResource("2_iuonh")]
+position = Vector2(186, -191)
+score = -10.0
+area = Vector2(224.925, 139.83)
+
+[node name="ClickZone3" parent="Page1" unique_id=55270609 instance=ExtResource("2_iuonh")]
+position = Vector2(-155, 101)
+area = Vector2(221.375, 104.145)
+
+[node name="ClickZone4" parent="Page1" unique_id=1580997035 instance=ExtResource("2_iuonh")]
+position = Vector2(172, 124)
+score = 100.0
+area = Vector2(241.965, 329.71)
+
+[node name="Page2" type="Sprite2D" parent="." unique_id=58408148]
+texture = ExtResource("3_k2fmo")
+
+[node name="ClickZone" parent="Page2" unique_id=581916060 instance=ExtResource("2_iuonh")]
+position = Vector2(-160, -165)
+score = 5.0
+area = Vector2(242.505, 110.535)
+
+[node name="ClickZone2" parent="Page2" unique_id=688389918 instance=ExtResource("2_iuonh")]
+position = Vector2(133, 21)
+score = 2.0
+area = Vector2(294.22, 123.985)
+
+[node name="ClickZone3" parent="Page2" unique_id=412949411 instance=ExtResource("2_iuonh")]
+position = Vector2(-134, 163)
+score = -20.0
+area = Vector2(317.04, 106.01)
+
+[node name="ClickZone4" parent="Page2" unique_id=263995384 instance=ExtResource("2_iuonh")]
+position = Vector2(169, 244)
+score = 3.0
+area = Vector2(191.41, 47.66)
+
+[node name="NextButton" type="Button" parent="." unique_id=1159570606]
+offset_left = 345.0
+offset_top = -31.0
+offset_right = 394.0
+offset_bottom = 31.0
+
+[node name="ColorRect" type="ColorRect" parent="NextButton" unique_id=799700087]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.35785
+offset_top = 13.0
+offset_right = 19.64215
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.7853982
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="NextButton" unique_id=1426163180]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.357849
+offset_top = -29.0
+offset_right = 33.64215
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+mouse_filter = 2
+
+[node name="PrevButton" type="Button" parent="." unique_id=1733750059]
+offset_left = -384.0
+offset_top = -31.0
+offset_right = -334.0
+offset_bottom = 29.0
+
+[node name="ColorRect" type="ColorRect" parent="PrevButton" unique_id=1731869452]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.715698
+offset_top = 0.78427124
+offset_right = 18.284302
+offset_bottom = 20.784271
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.7853982
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="PrevButton" unique_id=682876001]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.857849
+offset_top = -13.215729
+offset_right = 32.14215
+offset_bottom = 6.7842712
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="." unique_id=1436839784]
+offset_left = -557.0
+offset_top = -307.0
+offset_right = -430.0
+offset_bottom = -284.0
+text = "time remaining: 9999"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PrevButton" to="." method="_on_prev_button_pressed"]
