@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://1gn536eakj8y"]
+
+[ext_resource type="Script" uid="uid://c5qt1l48mh41m" path="res://scenes/main/bin.gd" id="1_5v7s2"]
+[ext_resource type="Texture2D" uid="uid://vcsp7bp3k164" path="res://assets/mini/bin.png" id="1_yrub4"]
+
+[node name="Bin" type="Control" unique_id=1832568977]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5v7s2")
+
+[node name="Bin" type="TextureRect" parent="." unique_id=1312940942]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 245.0
+offset_right = 627.0
+offset_bottom = 349.0
+texture = ExtResource("1_yrub4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

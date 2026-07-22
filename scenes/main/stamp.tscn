@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bhmb8tgbom4c1"]
+
+[ext_resource type="Script" uid="uid://cgdbotefjtxtj" path="res://scenes/main/stamp.gd" id="1_elf0m"]
+[ext_resource type="Texture2D" uid="uid://b86rcpm3qkwf4" path="res://assets/mini/stamp.png" id="2_3h241"]
+
+[node name="Stamp" type="Control" unique_id=1925373122]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_elf0m")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1945503632]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3h241")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpu5wr6tujshs"]
+
+[ext_resource type="Script" uid="uid://74f6i7u7q64c" path="res://scenes/main/mail.gd" id="1_bmk5e"]
+[ext_resource type="Texture2D" uid="uid://dt2l2yi54543l" path="res://assets/mini/bad.png" id="1_wb7t4"]
+
+[node name="Mail" type="Control" unique_id=1664464534]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_bmk5e")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1133862323]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_wb7t4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
