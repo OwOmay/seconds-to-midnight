@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="seconds to midnight"
-run/main_scene="uid://43vfe3roa27u"
+run/main_scene="uid://dpap1yklgfqvr"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Clock="*uid://cdhcwic5j73o7"
 Coordination="*uid://clwo7g5gc5ku8"
+MailManager="*uid://t16l17mimw8e"
 
 [display]
 

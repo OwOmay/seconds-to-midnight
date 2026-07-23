@@ -1,48 +1,65 @@
-extends Control
+@tool
+extends Area2D
 
-@export var score := 0.0
+@onready var shape := RectangleShape2D.new()
 
-var cancel_current := false
-var hold_offset := Vector2.INF
+@export var mail: Mail:
+	set(value):
+		mail = value
+		if is_inside_tree():
+			$Sprite2D.texture = mail.sprite
+
+var velocity := Vector2.ZERO
 var is_held := false
-var is_moved := false
-
 var is_hovered := false
+
+var is_moved := false
+var is_stamped := false
+
+var can_stamp := false
+
+func _ready() -> void:
+	if mail and mail.sprite:
+		$Sprite2D.texture = mail.sprite
+		shape.size = mail.sprite.get_size()
+		$CollisionShape2D.shape = shape
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	if not is_held:
+		position += velocity / delta
+		velocity *= 0.5
+		position.x = clampf(position.x, -320, 320)
+		position.y = clampf(position.y, -180, 180)
+	
+	if Coordination.stamping and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_stamp and not is_stamped and _is_stamping():
+		var stamp := Sprite2D.new()
+		stamp.texture = preload("res://assets/yaystamp.png")
+		add_child(stamp)
+		stamp.global_position = Coordination.stamp_pos
+		is_stamped = true
+		Clock.time_remaining += mail.score
+	
+	if MailManager.use_stamp:
+		if _is_stamping() and not MailManager.stamping_mails.has(self):
+			MailManager.stamping_mails.append(self)
+		if not _is_stamping():
+			MailManager.stamping_mails.erase(self)
+
+func _is_stamping() -> bool:
+	return get_overlapping_areas().any(
+		func(a: Area2D) -> bool: 
+			return a.name == &"Stamp"
+			)
 
 func _on_mouse_entered() -> void:
 	is_hovered = true
+	if MailManager and not MailManager.hovered_mails.has(self):
+		MailManager.hovered_mails.append(self)
 
 func _on_mouse_exited() -> void:
 	is_hovered = false
-
-func _process(_delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not (is_held or cancel_current):
-		if not is_hovered:
-			cancel_current = true
-			return
-		hold_offset = position - get_viewport().get_mouse_position()
-		is_held = true
-		is_moved = true
-		Coordination.held_mail = self
-		mouse_filter = Control.MOUSE_FILTER_IGNORE
-		$TextureRect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and (is_held or cancel_current):
-		cancel_current = false
-		hold_offset = Vector2.INF
-		is_held = false
-		Coordination.held_mail = null
-		mouse_filter = Control.MOUSE_FILTER_PASS
-		$TextureRect.mouse_filter = Control.MOUSE_FILTER_PASS
-	
-	if is_held:
-		position = hold_offset + get_viewport().get_mouse_position()
-	
-	if Coordination.stamping and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and is_hovered:
-		var stamp := TextureRect.new()
-		stamp.texture = preload("res://assets/mini/yaystamp.png")
-		stamp.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		add_child(stamp)
-		stamp.global_position = Coordination.stamp_pos
-		
-		Clock.time_remaining += score
+	if MailManager:
+		MailManager.hovered_mails.erase(self)

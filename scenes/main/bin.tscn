@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://1gn536eakj8y"]
+[gd_scene format=3 uid="uid://d3jokw3j544bh"]
 
-[ext_resource type="Script" uid="uid://c5qt1l48mh41m" path="res://scenes/main/bin.gd" id="1_5v7s2"]
-[ext_resource type="Texture2D" uid="uid://vcsp7bp3k164" path="res://assets/mini/bin.png" id="1_yrub4"]
+[ext_resource type="Script" uid="uid://xalgktcfxj1k" path="res://scenes/main/bin.gd" id="1_5v7s2"]
+[ext_resource type="Texture2D" uid="uid://vcsp7bp3k164" path="res://assets/bin.png" id="1_yrub4"]
 
-[node name="Bin" type="Control" unique_id=1832568977]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="CircleShape2D" id="CircleShape2D_uuojn"]
+radius = 56.008926
+
+[node name="Bin" type="Area2D" unique_id=984176466]
 script = ExtResource("1_5v7s2")
 
-[node name="Bin" type="TextureRect" parent="." unique_id=1312940942]
-layout_mode = 0
-offset_left = 470.0
-offset_top = 245.0
-offset_right = 627.0
-offset_bottom = 349.0
+[node name="Bin" type="Sprite2D" parent="." unique_id=117149571]
 texture = ExtResource("1_yrub4")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906310870]
+position = Vector2(6, 0)
+shape = SubResource("CircleShape2D_uuojn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

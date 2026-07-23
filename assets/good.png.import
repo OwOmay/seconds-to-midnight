@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o0t7t44linef"
-path="res://.godot/imported/yaystamp.png-5298e0f6af53c9dea62445413e441e11.ctex"
+uid="uid://dnof273viiil"
+path="res://.godot/imported/good.png-49ebaf8a8b38a01c5061f0672361b50a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mini/yaystamp.png"
-dest_files=["res://.godot/imported/yaystamp.png-5298e0f6af53c9dea62445413e441e11.ctex"]
+source_file="res://assets/good.png"
+dest_files=["res://.godot/imported/good.png-49ebaf8a8b38a01c5061f0672361b50a.ctex"]
 
 [params]
 

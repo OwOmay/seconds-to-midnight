@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Mail" format=3 uid="uid://c1wexu0qbbq33"]
+
+[ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="1_hh8mn"]
+[ext_resource type="Texture2D" uid="uid://dnof273viiil" path="res://assets/good.png" id="2_05tli"]
+
+[resource]
+script = ExtResource("1_hh8mn")
+sprite = ExtResource("2_05tli")
+score = 10.0
+metadata/_custom_type_script = "uid://mn6cxhl5flei"
