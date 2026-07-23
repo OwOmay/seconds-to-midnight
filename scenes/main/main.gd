@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	_spawn_mail()
+	Clock.is_running = true
 
 func _get_unmoved() -> Array[Node2D]:
 	var unmoved: Array[Node2D] = []

@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://bi008hq3tmety"]
+
+[ext_resource type="Script" uid="uid://qepqy47wmw51" path="res://scenes/menu/main.gd" id="1_rrmte"]
+
+[node name="Main" type="Control" unique_id=634024317]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rrmte")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=593739308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=415915855]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=187274122]
+layout_mode = 2
+text = "seconds to midnight"
+
+[node name="play" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1032933106]
+layout_mode = 2
+text = "play"
+
+[node name="settings" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1522201593]
+visible = false
+layout_mode = 2
+text = "settings"
+
+[node name="credits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=996459314]
+layout_mode = 2
+text = "credits"
+
+[node name="quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2052852665]
+layout_mode = 2
+text = "quit"
+
+[node name="play" type="Control" parent="." unique_id=209488726]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="play" unique_id=1878185330]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="Label" type="Label" parent="play" unique_id=1680503436]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 312.0
+offset_right = 580.0
+offset_bottom = 335.0
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="play" unique_id=1773301917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="play/MarginContainer" unique_id=2000435235]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="easy" type="Button" parent="play/MarginContainer/HBoxContainer" unique_id=1770004746]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "easy"
+
+[node name="normal" type="Button" parent="play/MarginContainer/HBoxContainer" unique_id=1220175868]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "normal"
+
+[node name="hard" type="Button" parent="play/MarginContainer/HBoxContainer" unique_id=1133399277]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "hard"
+
+[node name="back" type="Button" parent="play" unique_id=2007346060]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 313.0
+offset_right = 61.0
+offset_bottom = 344.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "back"
+
+[node name="credits" type="Control" parent="." unique_id=888260683]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="credits" unique_id=1563442592]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="back" type="Button" parent="credits" unique_id=1109307683]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 313.0
+offset_right = 61.0
+offset_bottom = 344.0
+text = "back"
+
+[node name="Label" type="RichTextLabel" parent="credits" unique_id=651070403]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -46.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]programming: owomay
+art, story & design: beefbuket
+
+made in 4 days for the 2026 gmtk game jam[/center]"
+fit_content = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="play/MarginContainer/HBoxContainer/easy" to="." method="_on_easy_mouse_entered"]
+[connection signal="mouse_exited" from="play/MarginContainer/HBoxContainer/easy" to="." method="_on_easy_mouse_exited"]
+[connection signal="pressed" from="play/MarginContainer/HBoxContainer/easy" to="." method="_load_game" binds= [0]]
+[connection signal="mouse_entered" from="play/MarginContainer/HBoxContainer/normal" to="." method="_on_normal_mouse_entered"]
+[connection signal="mouse_exited" from="play/MarginContainer/HBoxContainer/normal" to="." method="_on_normal_mouse_exited"]
+[connection signal="pressed" from="play/MarginContainer/HBoxContainer/normal" to="." method="_load_game" binds= [1]]
+[connection signal="mouse_entered" from="play/MarginContainer/HBoxContainer/hard" to="." method="_on_hard_mouse_entered"]
+[connection signal="mouse_exited" from="play/MarginContainer/HBoxContainer/hard" to="." method="_on_hard_mouse_exited"]
+[connection signal="pressed" from="play/MarginContainer/HBoxContainer/hard" to="." method="_load_game" binds= [2]]
+[connection signal="pressed" from="play/back" to="." method="_on_play_back_pressed"]
+[connection signal="pressed" from="credits/back" to="." method="_on_credits_back_pressed"]

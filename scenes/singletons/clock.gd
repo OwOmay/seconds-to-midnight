@@ -1,7 +1,9 @@
 extends Node
 
 var time_remaining := 90.0
-var is_running := true
+var is_running := false
+var difficulty := 0
 
 func _process(delta: float) -> void:
-	time_remaining -= delta
+	if is_running:
+		time_remaining -= delta
