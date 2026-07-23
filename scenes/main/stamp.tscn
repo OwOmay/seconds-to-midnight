@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjwkdnapkc7xg"]
 
 [ext_resource type="Script" uid="uid://cd31pqajjahlo" path="res://scenes/main/stamp.gd" id="1_elf0m"]
-[ext_resource type="Texture2D" uid="uid://b86rcpm3qkwf4" path="res://assets/stamp.png" id="2_3h241"]
+[ext_resource type="Texture2D" uid="uid://b86rcpm3qkwf4" path="res://assets/texture/stamp.png" id="2_3h241"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3h241"]
 size = Vector2(118, 120)

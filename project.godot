@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Clock="*uid://cdhcwic5j73o7"
 Coordination="*uid://clwo7g5gc5ku8"
 MailManager="*uid://t16l17mimw8e"
+GlobalAudio="*uid://d2blrt5e6aq4e"
 
 [display]
 

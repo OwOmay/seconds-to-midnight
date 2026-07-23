@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	
 	if Coordination.stamping and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_stamp and not is_stamped and _is_stamping():
 		var stamp := Sprite2D.new()
-		stamp.texture = preload("res://assets/yaystamp.png")
+		stamp.texture = preload("res://assets/texture/yaystamp.png")
 		add_child(stamp)
 		stamp.global_position = Coordination.stamp_pos
 		is_stamped = true

@@ -25,6 +25,8 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_deletion_finished(area: Area2D) -> void:
 	if deleting_nodes.has(area):
+		GlobalAudio.play_random("crumple")
+		
 		deleting_nodes.erase(area)
 		
 		MailManager.hovered_mails.erase(area)

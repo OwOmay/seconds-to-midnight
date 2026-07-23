@@ -18,6 +18,8 @@ func _pickup_mail(mouse_pos: Vector2) -> void:
 	if hovered_mails.is_empty():
 		return
 	
+	GlobalAudio.play_random("flip")
+	
 	hovered_mails.sort_custom(func(a: Node2D, b: Node2D) -> bool:
 		if a.z_index != b.z_index:
 			return a.z_index > b.z_index
@@ -36,6 +38,8 @@ func _pickup_mail(mouse_pos: Vector2) -> void:
 
 func _drop_mail() -> void:
 	if held_mail:
+		GlobalAudio.play_random("flip")
+		
 		held_mail.is_held = false
 		held_mail.z_index = 0
 		held_mail = null

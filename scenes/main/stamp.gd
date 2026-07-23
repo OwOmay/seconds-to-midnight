@@ -19,11 +19,16 @@ func _process(_delta: float) -> void:
 		if not is_hovered:
 			cancel_current = true
 			return
+		GlobalAudio.play_random("stamp")
+		
 		hold_offset = position - get_viewport().get_mouse_position()
 		is_held = true
 		Coordination.stamping = true
 	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and (is_held or cancel_current):
+		if is_held:
+			GlobalAudio.play_random("stamp")
+		
 		cancel_current = false
 		hold_offset = Vector2.INF
 		is_held = false

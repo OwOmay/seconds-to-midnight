@@ -18,6 +18,8 @@ func _get_unmoved() -> Array[Node2D]:
 func _spawn_mail() -> void:
 	var mail: Mail = preload("res://data/main.tres").pick(0)
 	if mail:
+		GlobalAudio.play_random("drop")
+		
 		var mail_node: Node2D = preload("res://scenes/main/mail.tscn").instantiate()
 		
 		mail_node.mail = mail
