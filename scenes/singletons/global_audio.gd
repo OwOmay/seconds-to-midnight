@@ -7,6 +7,17 @@ var num_ids := {
 	"stamp": 2
 }
 
+var last_played := {
+	"crumple": -1,
+	"drop": -1,
+	"flip": -1,
+	"stamp": -1
+}
+
 func play_random(id: String):
 	if num_ids.keys().has(id):
-		get_node(id + str((randi() % num_ids[id]) + 1)).play()
+		var variation = randi() % num_ids[id]
+		while variation == last_played[id]:
+			variation = randi() % num_ids[id]
+		last_played[id] = variation
+		get_node(id + str(variation + 1)).play()
