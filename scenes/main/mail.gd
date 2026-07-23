@@ -23,6 +23,17 @@ func _ready() -> void:
 		$Sprite2D.texture = mail.sprite
 		shape.size = mail.sprite.get_size()
 		$CollisionShape2D.shape = shape
+	
+	MailManager.stamp.connect(_stamp)
+
+func _stamp(pos: Vector2) -> void:
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_stamp and not is_stamped:
+		var stamp := Sprite2D.new()
+		stamp.texture = preload("res://assets/texture/yaystamp.png")
+		add_child(stamp)
+		stamp.global_position = pos
+		is_stamped = true
+		Clock.time_remaining += mail.score
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -33,14 +44,6 @@ func _process(delta: float) -> void:
 		velocity *= 0.5
 		position.x = clampf(position.x, -320, 320)
 		position.y = clampf(position.y, -180, 180)
-	
-	if Coordination.stamping and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_stamp and not is_stamped and _is_stamping():
-		var stamp := Sprite2D.new()
-		stamp.texture = preload("res://assets/texture/yaystamp.png")
-		add_child(stamp)
-		stamp.global_position = Coordination.stamp_pos
-		is_stamped = true
-		Clock.time_remaining += mail.score
 	
 	if MailManager.use_stamp:
 		if _is_stamping() and not MailManager.stamping_mails.has(self):

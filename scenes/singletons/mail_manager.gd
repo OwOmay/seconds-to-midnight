@@ -7,6 +7,9 @@ var hold_offset := Vector2.ZERO
 
 var use_stamp := false
 
+@warning_ignore("unused_signal")
+signal stamp(pos: Vector2)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and not use_stamp:
@@ -50,11 +53,11 @@ func _process(delta: float) -> void:
 		var mouse_pos := held_mail.get_viewport().get_mouse_position()
 		var target_pos := mouse_pos + hold_offset
 		
-		held_mail.velocity = (target_pos - held_mail.position) * delta
+		held_mail.velocity = (target_pos - held_mail.global_position) * delta
 		
-		held_mail.position = target_pos
-		held_mail.position.x = clampf(held_mail.position.x, -320, 320)
-		held_mail.position.y = clampf(held_mail.position.y, -180, 180)
+		held_mail.global_position = target_pos
+		held_mail.global_position.x = clampf(held_mail.global_position.x, -320, 320)
+		held_mail.global_position.y = clampf(held_mail.global_position.y, -180, 180)
 	
 	if use_stamp and not stamping_mails.is_empty():
 		stamping_mails.sort_custom(func(a: Node2D, b: Node2D) -> bool:
