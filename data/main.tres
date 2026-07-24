@@ -3,15 +3,24 @@
 [ext_resource type="Script" uid="uid://dhvbdagmgqt61" path="res://data/scripts/sequence.gd" id="1_8yjhw"]
 [ext_resource type="Script" uid="uid://dqn3b05ngv1up" path="res://data/scripts/pool.gd" id="1_dpyoj"]
 [ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="2_h8oor"]
-[ext_resource type="Resource" uid="uid://bs8gjjipxo8bw" path="res://data/mail/bad.tres" id="3_y4vli"]
-[ext_resource type="Resource" uid="uid://c1wexu0qbbq33" path="res://data/mail/good.tres" id="4_77lu8"]
+[ext_resource type="Resource" uid="uid://bx12xde4e1vwg" path="res://data/mail/1.civillian_effort.tres" id="3_v62xa"]
+[ext_resource type="Resource" uid="uid://cydecskfr3fku" path="res://data/mail/1.economy.tres" id="4_kg15b"]
+[ext_resource type="Resource" uid="uid://qc00omn1bs7u" path="res://data/mail/1.evil_reader.tres" id="5_dkiy7"]
+[ext_resource type="Resource" uid="uid://bkueqss3tc51r" path="res://data/mail/1.mr_kitty.tres" id="5_h8oor"]
+[ext_resource type="Resource" uid="uid://w8uw36j0yvlc" path="res://data/mail/2.fish.tres" id="7_ibbog"]
+[ext_resource type="Resource" uid="uid://cos2bp3hdlepm" path="res://data/mail/2.mr_kitty.tres" id="8_3dnqp"]
 
 [sub_resource type="Resource" id="Resource_aowjf"]
 script = ExtResource("1_dpyoj")
-mails = Array[ExtResource("2_h8oor")]([ExtResource("3_y4vli"), ExtResource("4_77lu8"), ExtResource("3_y4vli"), ExtResource("4_77lu8"), ExtResource("3_y4vli"), ExtResource("4_77lu8")])
+mails = Array[ExtResource("2_h8oor")]([ExtResource("3_v62xa"), ExtResource("4_kg15b"), ExtResource("5_dkiy7"), ExtResource("5_h8oor")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_pb6sh"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("7_ibbog"), ExtResource("8_3dnqp")])
 metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [resource]
 script = ExtResource("1_8yjhw")
-pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_aowjf")])
+pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_aowjf"), SubResource("Resource_pb6sh")])
 metadata/_custom_type_script = "uid://dhvbdagmgqt61"

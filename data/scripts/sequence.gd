@@ -4,6 +4,8 @@ extends Resource
 @export var pools: Array[Pool]
 
 func pick(pool: int) -> Mail:
+	if pool >= pools.size():
+		return
 	var ret_mail := pools[pool].pick()
 	if ret_mail == null:
 		return
