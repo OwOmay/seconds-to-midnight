@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1lapr8rqkyp"
-path="res://.godot/imported/inkpad.png-617b6c3d7bb3a2510e9d056544a7f763.ctex"
+uid="uid://dq703joekr4cp"
+path="res://.godot/imported/News_Base_1.webp-af5079c3f1704f543f65457612cb15df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/inkpad.png"
-dest_files=["res://.godot/imported/inkpad.png-617b6c3d7bb3a2510e9d056544a7f763.ctex"]
+source_file="res://assets/texture/News_Base_1.webp"
+dest_files=["res://.godot/imported/News_Base_1.webp-af5079c3f1704f543f65457612cb15df.ctex"]
 
 [params]
 

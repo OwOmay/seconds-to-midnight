@@ -26,7 +26,13 @@ func _spawn_mail() -> void:
 		
 		mail_node.mail = mail
 		mail_first.add_sibling(mail_node)
-		mail_node.position = Vector2(-196, -22)
+		mail_node.position = Vector2(-194, -276)
+		
+		var pos_tween = mail_node.create_tween()
+		pos_tween.set_ease(Tween.EASE_OUT)
+		pos_tween.set_trans(Tween.TRANS_CIRC)
+		pos_tween.tween_property(mail_node, "position", Vector2(-194, -4), 0.75)
+		pos_tween.tween_property(mail_node, "is_intro", false, 0)
 		
 		for unit in _get_unmoved():
 			unit.position.y += 32

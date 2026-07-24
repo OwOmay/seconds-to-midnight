@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 		is_held = true
 		
 		if offset_tween and offset_tween.is_running():
-			offset_tween.kill()
+			offset_tween.custom_step(1.0)
 		
 		hold_offset = global_position - get_viewport().get_mouse_position()
 		
@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 			GlobalAudio.play_random("stamp")
 			
 			if offset_tween and offset_tween.is_running():
-				offset_tween.kill()
+				offset_tween.custom_step(1.0)
 				
 			offset_tween = create_tween()
 			var dest := get_viewport().get_mouse_position() + original_offset
@@ -61,7 +61,7 @@ func _process(_delta: float) -> void:
 					if area.name == &"Inkpad":
 						ink = 2.0
 				if ink > 0.1:
-					MailManager.stamp.emit(dest)
+					MailManager.stamp.emit(dest + Vector2(0, 32))
 				)
 		
 		cancel_current = false
@@ -74,4 +74,4 @@ func _process(_delta: float) -> void:
 		global_position.x = clampf(global_position.x, -320, 320)
 		global_position.y = clampf(global_position.y, -180, 180)
 	
-	$Stampshadow.modulate.a = 1 - $Stamp.position.y / -80
+	$StampShadow.modulate.a = 1 - $Stamp.position.y / -80

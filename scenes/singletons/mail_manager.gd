@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 		
 		held_mail.global_position = target_pos
 		held_mail.global_position.x = clampf(held_mail.global_position.x, -320, 320)
-		held_mail.global_position.y = clampf(held_mail.global_position.y, -180, 180)
+		held_mail.global_position.y = clampf(held_mail.global_position.y, -20, 180)
 
 func _on_stamp(pos: Vector2):
 	if not stamping_mails.is_empty():

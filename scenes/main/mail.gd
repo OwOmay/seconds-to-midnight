@@ -1,7 +1,7 @@
 @tool
 extends Area2D
 
-@onready var shape := RectangleShape2D.new()
+#@onready var shape := RectangleShape2D.new()
 
 @export var mail: Mail:
 	set(value):
@@ -12,15 +12,18 @@ extends Area2D
 var velocity := Vector2.ZERO
 var is_held := false
 var is_hovered := false
+var is_intro := false
 
 var is_moved := false
 var is_stamped := false
 
 func _ready() -> void:
 	if mail and mail.sprite:
-		$Sprite2D.texture = mail.sprite
-		shape.size = mail.sprite.get_size()
-		$CollisionShape2D.shape = shape
+		$Sprite2D.texture = [preload("res://assets/texture/News_Base_1.webp"), preload("res://assets/texture/News_Base_2.webp"), preload("res://assets/texture/News_Base_3.webp")][randi() % 3]
+		
+		$Sprite2D2.texture = mail.sprite
+		#shape.size = mail.sprite.get_size()
+		#$CollisionShape2D.shape = shape
 		
 		$top_particles.emission_rect_extents = Vector2(mail.sprite.get_width() * 0.5, 1.0)
 		$top_particles.position.y = -mail.sprite.get_height() * 0.5
@@ -34,7 +37,7 @@ func _ready() -> void:
 func stamp(pos: Vector2) -> void:
 	if not is_stamped:
 		var stamp_sprite := Sprite2D.new()
-		stamp_sprite.texture = preload("res://assets/texture/yaystamp.png")
+		stamp_sprite.texture = preload("res://assets/texture/Stamp_Mark.png")
 		add_child(stamp_sprite)
 		stamp_sprite.global_position = pos
 		is_stamped = true
@@ -46,11 +49,11 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if not is_held:
+	if not is_held and not is_intro:
 		position += velocity * 40
 		velocity *= 0.8
 		position.x = clampf(position.x, -320, 320)
-		position.y = clampf(position.y, -180, 180)
+		position.y = clampf(position.y, -20, 180)
 	
 	if MailManager.use_stamp:
 		if _is_stamping() and not MailManager.stamping_mails.has(self):

@@ -14,6 +14,9 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_4uv35"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow5a4"]
+size = Vector2(172, 232)
+
 [node name="Mail" type="Area2D" unique_id=284724635]
 script = ExtResource("1_bmk5e")
 
@@ -98,7 +101,11 @@ color_ramp = SubResource("Gradient_4uv35")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1149987657]
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1679645848]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=755875693]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_ow5a4")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

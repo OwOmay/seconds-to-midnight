@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vcsp7bp3k164"
-path="res://.godot/imported/bin.png-e1c50764870dc72a3e20f1949a7aa24f.ctex"
+uid="uid://dbfwu5t84ja53"
+path="res://.godot/imported/Stamp_Shadow.webp-6caf1f6e29a6e2e0da95548820784a7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/bin.png"
-dest_files=["res://.godot/imported/bin.png-e1c50764870dc72a3e20f1949a7aa24f.ctex"]
+source_file="res://assets/texture/Stamp_Shadow.webp"
+dest_files=["res://.godot/imported/Stamp_Shadow.webp-6caf1f6e29a6e2e0da95548820784a7c.ctex"]
 
 [params]
 

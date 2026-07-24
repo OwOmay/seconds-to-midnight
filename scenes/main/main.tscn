@@ -1,31 +1,36 @@
 [gd_scene format=3 uid="uid://dpap1yklgfqvr"]
 
 [ext_resource type="Script" uid="uid://brvf45kuxm1et" path="res://scenes/main/main.gd" id="1_l3cfh"]
-[ext_resource type="Texture2D" uid="uid://cnc8phs3cqolu" path="res://assets/texture/desk.png" id="2_iuonh"]
+[ext_resource type="Texture2D" uid="uid://c1fwhxnhfw3p1" path="res://assets/texture/Desk.webp" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://d3jokw3j544bh" path="res://scenes/main/bin.tscn" id="3_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://dis08cex3dyjf" path="res://scenes/main/inkpad.tscn" id="4_6q06x"]
 [ext_resource type="PackedScene" uid="uid://bjwkdnapkc7xg" path="res://scenes/main/stamp.tscn" id="5_6q06x"]
+[ext_resource type="Texture2D" uid="uid://0pmmvcmqp776" path="res://assets/texture/Slot_top.png" id="6_ow5a4"]
 
 [node name="Main" type="Node2D" unique_id=757727778]
 script = ExtResource("1_l3cfh")
 
 [node name="Desk" type="Sprite2D" parent="." unique_id=1002419233]
-texture = ExtResource("2_iuonh")
+texture = ExtResource("2_ow5a4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1475061215]
 
 [node name="Bin" parent="." unique_id=984176466 instance=ExtResource("3_l3cfh")]
-position = Vector2(222, 90)
+position = Vector2(218, 97)
 
 [node name="Mails" type="Node2D" parent="." unique_id=531679038]
 
 [node name="first" type="Node2D" parent="Mails" unique_id=475768647]
 
+[node name="SlotTop" type="Sprite2D" parent="." unique_id=1171624470]
+position = Vector2(-195, -160)
+texture = ExtResource("6_ow5a4")
+
 [node name="Inkpad" parent="." unique_id=54085274 instance=ExtResource("4_6q06x")]
-position = Vector2(240, -73)
+position = Vector2(215, -67)
 
 [node name="Stamp" parent="." unique_id=901818596 instance=ExtResource("5_6q06x")]
-position = Vector2(237, -83)
+position = Vector2(216, -102)
 
 [node name="Timer" type="Timer" parent="." unique_id=687293054]
 wait_time = 10.0
