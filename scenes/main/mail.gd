@@ -16,8 +16,6 @@ var is_hovered := false
 var is_moved := false
 var is_stamped := false
 
-var can_stamp := false
-
 func _ready() -> void:
 	if mail and mail.sprite:
 		$Sprite2D.texture = mail.sprite
@@ -32,16 +30,13 @@ func _ready() -> void:
 		$bottom_particles.position.y = mail.sprite.get_height() * 0.5
 		$left_particles.emission_rect_extents = Vector2(1.0, mail.sprite.get_height() * 0.5)
 		$left_particles.position.x = -mail.sprite.get_width() * 0.5
-	
-	if not Engine.is_editor_hint():
-		MailManager.stamp.connect(_stamp)
 
-func _stamp(pos: Vector2) -> void:
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_stamp and not is_stamped:
-		var stamp := Sprite2D.new()
-		stamp.texture = preload("res://assets/texture/yaystamp.png")
-		add_child(stamp)
-		stamp.global_position = pos
+func stamp(pos: Vector2) -> void:
+	if not is_stamped:
+		var stamp_sprite := Sprite2D.new()
+		stamp_sprite.texture = preload("res://assets/texture/yaystamp.png")
+		add_child(stamp_sprite)
+		stamp_sprite.global_position = pos
 		is_stamped = true
 		Clock.time_remaining += mail.score
 

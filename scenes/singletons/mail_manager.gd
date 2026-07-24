@@ -10,6 +10,9 @@ var use_stamp := false
 @warning_ignore("unused_signal")
 signal stamp(pos: Vector2)
 
+func _ready() -> void:
+	stamp.connect(_on_stamp)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and not use_stamp:
@@ -60,13 +63,12 @@ func _process(delta: float) -> void:
 		held_mail.global_position = target_pos
 		held_mail.global_position.x = clampf(held_mail.global_position.x, -320, 320)
 		held_mail.global_position.y = clampf(held_mail.global_position.y, -180, 180)
-	
-	if use_stamp and not stamping_mails.is_empty():
+
+func _on_stamp(pos: Vector2):
+	if not stamping_mails.is_empty():
 		stamping_mails.sort_custom(func(a: Node2D, b: Node2D) -> bool:
 			if a.z_index != b.z_index:
 				return a.z_index > b.z_index
 			return a.get_index() > b.get_index()
 		)
-		for mail in stamping_mails:
-			mail.can_stamp = false
-		stamping_mails[0].can_stamp = true
+		stamping_mails[0].stamp(pos)
