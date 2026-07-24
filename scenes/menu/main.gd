@@ -7,21 +7,24 @@ func _ready() -> void:
 func _on_play_pressed() -> void:
 	$play.show()
 
+func _on_play_back_pressed() -> void:
+	$play.hide()
+
 func _on_settings_pressed() -> void:
-	pass
+	$settings.show()
+
+func _on_settings_back_pressed() -> void:
+	$settings.hide()
 
 func _on_credits_pressed() -> void:
 	$credits.show()
 
-func _on_quit_pressed() -> void:
-	await get_tree().create_timer(0.5).timeout
-	get_tree().quit()
-
 func _on_credits_back_pressed() -> void:
 	$credits.hide()
 
-func _on_play_back_pressed() -> void:
-	$play.hide()
+func _on_quit_pressed() -> void:
+	await get_tree().create_timer(0.5).timeout
+	get_tree().quit()
 
 func _on_easy_mouse_entered() -> void:
 	$play/Label.text = "the clock gives you more time, and good news is more effective."
