@@ -6,6 +6,8 @@ extends Node2D
 func _ready() -> void:
 	_spawn_mail()
 	Clock.is_running = true
+	
+	GlobalAudio.music_normal()
 
 func _get_unmoved() -> Array[Node2D]:
 	var unmoved: Array[Node2D] = []
@@ -31,6 +33,11 @@ func _spawn_mail() -> void:
 
 func _process(_delta: float) -> void:
 	$Label.text = "remaining time: %s" % Clock.time_remaining
+	
+	if Clock.time_remaining < 30 and GlobalAudio.is_music_normal:
+		GlobalAudio.music_frantic()
+	elif Clock.time_remaining > 30 and not GlobalAudio.is_music_normal:
+		GlobalAudio.music_normal()
 
 func _on_timer_timeout() -> void:
 	_spawn_mail()

@@ -49,3 +49,6 @@ func _load_game(difficulty: int) -> void:
 	Clock.difficulty = difficulty
 	
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+
+func _on_credits_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
