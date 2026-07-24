@@ -39,6 +39,8 @@ func stamp(pos: Vector2) -> void:
 		stamp_sprite.global_position = pos
 		is_stamped = true
 		Clock.time_remaining += mail.score
+		
+		MailManager.stamp_success.emit()
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():

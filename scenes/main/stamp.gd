@@ -1,13 +1,18 @@
-extends Node2D
+extends Area2D
 
 var cancel_current := false
 var hold_offset := Vector2.INF
 var original_offset := Vector2.INF
 var is_held := false
 
+var ink := 2.0
+
 var is_hovered := false
 
 var offset_tween: Tween
+
+func _ready() -> void:
+	MailManager.stamp_success.connect(func(): ink -= 1.0)
 
 func _on_mouse_entered() -> void:
 	is_hovered = true
@@ -34,7 +39,7 @@ func _process(_delta: float) -> void:
 		original_offset = hold_offset
 		
 		offset_tween = create_tween()
-		offset_tween.tween_property(self, "hold_offset", hold_offset + Vector2(0, -40), 0.1)
+		offset_tween.tween_property($Stamp, "position", Vector2(0, -40), 0.1)
 	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and (is_held or cancel_current):
 		if is_held:
@@ -49,9 +54,15 @@ func _process(_delta: float) -> void:
 			dest.x = clampf(dest.x, -320, 320)
 			dest.y = clampf(dest.y, -180, 180)
 			
-			offset_tween.tween_property(self, "global_position", dest, 0.1)
+			offset_tween.tween_property($Stamp, "position", Vector2.ZERO, 0.1)
 			
-			offset_tween.finished.connect(MailManager.stamp.emit.bind(dest))
+			offset_tween.finished.connect(func():
+				for area in get_overlapping_areas():
+					if area.name == &"Inkpad":
+						ink = 2.0
+				if ink > 0.1:
+					MailManager.stamp.emit(dest)
+				)
 		
 		cancel_current = false
 		hold_offset = Vector2.INF
@@ -62,3 +73,5 @@ func _process(_delta: float) -> void:
 		global_position = hold_offset + get_viewport().get_mouse_position()
 		global_position.x = clampf(global_position.x, -320, 320)
 		global_position.y = clampf(global_position.y, -180, 180)
+	
+	$Stampshadow.modulate.a = 1 - $Stamp.position.y / -80

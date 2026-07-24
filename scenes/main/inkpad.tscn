@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dis08cex3dyjf"]
+
+[ext_resource type="Texture2D" uid="uid://bf1lapr8rqkyp" path="res://assets/texture/inkpad.png" id="1_th18c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvxn3"]
+size = Vector2(122, 67)
+
+[node name="Inkpad" type="Area2D" unique_id=54085274]
+
+[node name="Inkpad" type="Sprite2D" parent="." unique_id=89869120]
+texture = ExtResource("1_th18c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1850867946]
+position = Vector2(0, 26.5)
+shape = SubResource("RectangleShape2D_pvxn3")

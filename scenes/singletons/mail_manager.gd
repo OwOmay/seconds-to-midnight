@@ -10,6 +10,9 @@ var use_stamp := false
 @warning_ignore("unused_signal")
 signal stamp(pos: Vector2)
 
+@warning_ignore("unused_signal")
+signal stamp_success
+
 func _ready() -> void:
 	stamp.connect(_on_stamp)
 

@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cd31pqajjahlo" path="res://scenes/main/stamp.gd" id="1_elf0m"]
 [ext_resource type="Texture2D" uid="uid://b86rcpm3qkwf4" path="res://assets/texture/stamp.png" id="2_3h241"]
+[ext_resource type="Texture2D" uid="uid://duwoqbbdqx78h" path="res://assets/texture/stampshadow.png" id="3_shuk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3h241"]
 size = Vector2(118, 120)
 
 [node name="Stamp" type="Area2D" unique_id=901818596]
 script = ExtResource("1_elf0m")
+
+[node name="Stampshadow" type="Sprite2D" parent="." unique_id=1046782497]
+texture = ExtResource("3_shuk0")
 
 [node name="Stamp" type="Sprite2D" parent="." unique_id=1874066138]
 texture = ExtResource("2_3h241")
