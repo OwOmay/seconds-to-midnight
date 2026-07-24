@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1fwhxnhfw3p1" path="res://assets/texture/Desk.webp" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://d3jokw3j544bh" path="res://scenes/main/bin.tscn" id="3_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://dis08cex3dyjf" path="res://scenes/main/inkpad.tscn" id="4_6q06x"]
+[ext_resource type="PackedScene" uid="uid://tbjjymc4j31y" path="res://scenes/main/antibin.tscn" id="4_hujxm"]
 [ext_resource type="PackedScene" uid="uid://bjwkdnapkc7xg" path="res://scenes/main/stamp.tscn" id="5_6q06x"]
 [ext_resource type="Texture2D" uid="uid://0pmmvcmqp776" path="res://assets/texture/Slot_top.png" id="6_ow5a4"]
 
@@ -16,6 +17,9 @@ texture = ExtResource("2_ow5a4")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1475061215]
 
 [node name="Bin" parent="." unique_id=984176466 instance=ExtResource("3_l3cfh")]
+position = Vector2(218, 97)
+
+[node name="Antibin" parent="." unique_id=1236056642 instance=ExtResource("4_hujxm")]
 position = Vector2(218, 97)
 
 [node name="Mails" type="Node2D" parent="." unique_id=531679038]

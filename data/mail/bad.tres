@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Mail" format=3 uid="uid://bs8gjjipxo8bw"]
 
 [ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="1_vpd66"]
-[ext_resource type="Texture2D" uid="uid://bpftriuhw6lel" path="res://assets/texture/badnews.png" id="2_5nbcc"]
+[ext_resource type="Texture2D" uid="uid://bpftriuhw6lel" path="res://assets/texture/mail/badnews.png" id="2_5nbcc"]
 
 [resource]
 script = ExtResource("1_vpd66")

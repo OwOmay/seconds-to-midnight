@@ -31,8 +31,18 @@ func play_random(id: String):
 		n.volume_linear = sfx_volume
 		n.play()
 
+func play(id: String):
+	if has_node(id):
+		var n: AudioStreamPlayer = get_node(id)
+		n.volume_linear = sfx_volume
+		n.play()
+
+func music_stop():
+	$clocksong1.stop()
+	$clocksong2.stop()
+
 func music_normal():
-	if is_zero_approx(music_volume):
+	if is_music_normal and $clocksong1.playing:
 		return
 	
 	is_music_normal = true
@@ -46,7 +56,7 @@ func music_normal():
 	outro_tween.tween_property($clocksong2, "volume_linear", 0.0, 1.0)
 
 func music_frantic():
-	if is_zero_approx(music_volume):
+	if not is_music_normal and $clocksong2.playing:
 		return
 	
 	is_music_normal = false

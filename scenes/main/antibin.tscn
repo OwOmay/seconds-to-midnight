@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tbjjymc4j31y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyv3l"]
+size = Vector2(422, 360)
+
+[node name="Antibin" type="Area2D" unique_id=984176466]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1087388573]
+position = Vector2(-375, -97)
+shape = SubResource("RectangleShape2D_dyv3l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1531830065]
+position = Vector2(-109, -326)
+shape = SubResource("RectangleShape2D_dyv3l")

@@ -49,6 +49,14 @@ func _process(_delta: float) -> void:
 		GlobalAudio.music_frantic()
 	elif Clock.time_remaining > 15 and not GlobalAudio.is_music_normal:
 		GlobalAudio.music_normal()
+	
+	if Clock.time_remaining < 0:
+		get_tree().paused = true
+		GlobalAudio.music_stop()
+		GlobalAudio.play("boom")
+		await get_tree().create_timer(5.5).timeout
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/menu/end.tscn")
 
 func _on_timer_timeout() -> void:
 	_spawn_mail()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Mail" format=3 uid="uid://d1l8xbqb05wsc"]
+
+[ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="1_pktqk"]
+[ext_resource type="Texture2D" uid="uid://cf4ft4drnt4lf" path="res://assets/texture/mail/1._Clock_come_to_life.webp" id="2_fjbx4"]
+
+[resource]
+script = ExtResource("1_pktqk")
+sprite = ExtResource("2_fjbx4")
+score = -2.0
+metadata/_custom_type_script = "uid://mn6cxhl5flei"
