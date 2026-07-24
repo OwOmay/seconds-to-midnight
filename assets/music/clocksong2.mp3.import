@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/clocksong2.mp3-2d482d79ce872cf609d825c99ed97c
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
