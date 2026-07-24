@@ -26,9 +26,12 @@ func _process(_delta: float) -> void:
 		
 		hold_offset = global_position - get_viewport().get_mouse_position()
 		
-		original_offset = hold_offset
+		if original_offset.is_equal_approx(Vector2.INF):
+			original_offset = hold_offset
 		
 		if offset_tween:
+			if offset_tween.finished.is_connected(drop):
+				offset_tween.finished.disconnect(drop)
 			offset_tween.custom_step(1.0)
 		offset_tween = create_tween()
 		offset_tween.tween_property(self, "hold_offset", hold_offset + Vector2(0, -40), 0.1)
@@ -39,6 +42,8 @@ func _process(_delta: float) -> void:
 		if is_held:
 			GlobalAudio.play_random("stamp")
 			if offset_tween:
+				if offset_tween.finished.is_connected(drop):
+					offset_tween.finished.disconnect(drop)
 				offset_tween.custom_step(1.0)
 			offset_tween = create_tween()
 			var dest := get_viewport().get_mouse_position() + original_offset
@@ -47,7 +52,7 @@ func _process(_delta: float) -> void:
 			dest.y = clampf(dest.y, -180, 180)
 			
 			offset_tween.tween_property(self, "global_position", dest, 0.1)
-			offset_tween.finished.connect(MailManager.emit_signal.bind("stamp", dest))
+			offset_tween.finished.connect(drop.bind(dest))
 		
 		cancel_current = false
 		hold_offset = Vector2.INF
@@ -57,3 +62,7 @@ func _process(_delta: float) -> void:
 		global_position = hold_offset + get_viewport().get_mouse_position()
 		global_position.x = clampf(global_position.x, -320, 320)
 		global_position.y = clampf(global_position.y, -180, 180)
+
+func drop(dest: Vector2):
+	original_offset = Vector2.INF
+	MailManager.emit_signal("stamp", dest)
