@@ -74,4 +74,4 @@ func _process(_delta: float) -> void:
 		global_position.x = clampf(global_position.x, -320, 320)
 		global_position.y = clampf(global_position.y, -180, 180)
 	
-	$StampShadow.modulate.a = 1 - $Stamp.position.y / -80
+	$StampShadow.modulate.a = 0.8 - $Stamp.position.y / -80

@@ -45,6 +45,8 @@ func _on_deletion_finished(area: Area2D) -> void:
 	if deleting_nodes.has(area):
 		deleting_nodes.erase(area)
 		
+		GlobalAudio.play_random("crumple")
+		
 		MailManager.hovered_mails.erase(area)
 		MailManager.stamping_mails.erase(area)
 		if MailManager.held_mail == area:

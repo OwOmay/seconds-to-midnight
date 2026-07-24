@@ -41,7 +41,7 @@ func stamp(pos: Vector2) -> void:
 		add_child(stamp_sprite)
 		stamp_sprite.global_position = pos
 		is_stamped = true
-		Clock.time_remaining += mail.score
+		Clock._add_time(mail.score)
 		
 		MailManager.stamp_success.emit()
 

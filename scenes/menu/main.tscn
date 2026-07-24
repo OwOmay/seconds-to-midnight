@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://qepqy47wmw51" path="res://scenes/menu/main.gd" id="1_rrmte"]
 [ext_resource type="Script" uid="uid://cv3nmp2epme4g" path="res://scenes/menu/settings.gd" id="2_omghv"]
+[ext_resource type="PackedScene" uid="uid://dms0g03aovfda" path="res://scenes/menu/background.tscn" id="2_r8hr5"]
+[ext_resource type="Texture2D" uid="uid://cspr5y0u71s4f" path="res://assets/texture/News_Base_3.webp" id="4_ynvfx"]
 
 [node name="Main" type="Control" unique_id=634024317]
 layout_mode = 3
@@ -11,6 +13,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rrmte")
+
+[node name="Background" parent="." unique_id=501297395 instance=ExtResource("2_r8hr5")]
+layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=675353252]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 64.0
+offset_right = 223.0
+offset_bottom = 313.0
+texture = ExtResource("4_ynvfx")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=187274122]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 109.0
+offset_right = 175.0
+offset_bottom = 132.0
+text = "seconds to midnight"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=593739308]
 layout_mode = 1
@@ -22,10 +43,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=415915855]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=187274122]
-layout_mode = 2
-text = "seconds to midnight"
 
 [node name="play" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1032933106]
 layout_mode = 2
@@ -59,7 +76,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.2509804)
+color = Color(0, 0, 0, 0.5019608)
 
 [node name="Label" type="Label" parent="play" unique_id=1680503436]
 layout_mode = 0
@@ -127,7 +144,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.2509804)
+color = Color(0, 0, 0, 0.5019608)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="settings" unique_id=903043602]
 layout_mode = 1
@@ -192,7 +209,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.5019608)
 
 [node name="back" type="Button" parent="credits" unique_id=1109307683]
 layout_mode = 0

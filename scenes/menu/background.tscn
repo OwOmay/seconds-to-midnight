@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dms0g03aovfda"]
+
+[ext_resource type="Texture2D" uid="uid://c1fwhxnhfw3p1" path="res://assets/texture/Desk.webp" id="1_t18kw"]
+[ext_resource type="Texture2D" uid="uid://ll3fh0yfw2ob" path="res://assets/texture/Stamp_Stamp.webp" id="2_fojqg"]
+[ext_resource type="Texture2D" uid="uid://0pmmvcmqp776" path="res://assets/texture/Slot_top.png" id="3_fojqg"]
+
+[node name="Background" type="Control" unique_id=501297395]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1920687262]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_t18kw")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1226778837]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 17.0
+offset_right = 597.0
+offset_bottom = 140.0
+texture = ExtResource("2_fojqg")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1073814585]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -10.0
+offset_right = 237.0
+offset_bottom = 50.0
+texture = ExtResource("3_fojqg")

@@ -5,11 +5,18 @@ extends Node2D
 
 var phase := 0
 
+var mail_picker: Sequence
+
 func _ready() -> void:
+	mail_picker = load("res://data/main.tres")
 	_spawn_mail()
 	Clock.is_running = true
 	
 	GlobalAudio.music_normal()
+	
+	$Timer.wait_time = [15, 10, 8][Clock.difficulty]
+	$Timer.stop()
+	$Timer.start()
 
 func _get_unmoved() -> Array[Node2D]:
 	var unmoved: Array[Node2D] = []
@@ -20,9 +27,15 @@ func _get_unmoved() -> Array[Node2D]:
 	return unmoved
 
 func _spawn_mail(is_retry := false) -> void:
-	var mail: Mail = preload("res://data/main.tres").pick(phase)
+	var mail := mail_picker.pick(phase)
 	if mail:
 		GlobalAudio.play_random("drop")
+		
+		for unit in _get_unmoved():
+			var pos_tween_mini := unit.create_tween()
+			pos_tween_mini.set_ease(Tween.EASE_OUT)
+			pos_tween_mini.set_trans(Tween.TRANS_CIRC)
+			pos_tween_mini.tween_property(unit, "position", unit.position + Vector2(0, 32), 0.75)
 		
 		var mail_node: Node2D = preload("res://scenes/main/mail.tscn").instantiate()
 		
@@ -30,14 +43,11 @@ func _spawn_mail(is_retry := false) -> void:
 		mail_first.add_sibling(mail_node)
 		mail_node.position = Vector2(-194, -276)
 		
-		var pos_tween = mail_node.create_tween()
+		var pos_tween := mail_node.create_tween()
 		pos_tween.set_ease(Tween.EASE_OUT)
 		pos_tween.set_trans(Tween.TRANS_CIRC)
 		pos_tween.tween_property(mail_node, "position", Vector2(-194, -4), 0.75)
 		pos_tween.tween_property(mail_node, "is_intro", false, 0)
-		
-		for unit in _get_unmoved():
-			unit.position.y += 32
 	elif not is_retry:
 		phase += 1
 		_spawn_mail(true)

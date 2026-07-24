@@ -58,14 +58,15 @@ func _drop_mail() -> void:
 
 func _process(delta: float) -> void:
 	if held_mail and is_instance_valid(held_mail):
-		var mouse_pos := held_mail.get_viewport().get_mouse_position()
-		var target_pos := mouse_pos + hold_offset
-		
-		held_mail.velocity = held_mail.velocity.lerp((target_pos - held_mail.global_position) * delta, 0.2)
-		
-		held_mail.global_position = target_pos
-		held_mail.global_position.x = clampf(held_mail.global_position.x, -320, 320)
-		held_mail.global_position.y = clampf(held_mail.global_position.y, -20, 180)
+		if held_mail.is_inside_tree():
+			var mouse_pos := held_mail.get_viewport().get_mouse_position()
+			var target_pos := mouse_pos + hold_offset
+			
+			held_mail.velocity = held_mail.velocity.lerp((target_pos - held_mail.global_position) * delta, 0.2)
+			
+			held_mail.global_position = target_pos
+			held_mail.global_position.x = clampf(held_mail.global_position.x, -320, 320)
+			held_mail.global_position.y = clampf(held_mail.global_position.y, -20, 180)
 
 func _on_stamp(pos: Vector2):
 	if not stamping_mails.is_empty():
