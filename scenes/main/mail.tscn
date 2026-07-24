@@ -2,15 +2,87 @@
 
 [ext_resource type="Script" uid="uid://djenhipitb0me" path="res://scenes/main/mail.gd" id="1_bmk5e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aowjf"]
+[sub_resource type="Curve" id="Curve_4uv35"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 140.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4uv35"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Mail" type="Area2D" unique_id=284724635]
 script = ExtResource("1_bmk5e")
 
+[node name="top_particles" type="CPUParticles2D" parent="." unique_id=592332443]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(90, 1)
+direction = Vector2(0, -1)
+spread = 5.0
+gravity = Vector2(0, -60)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+damping_min = 4.0
+damping_max = 4.0
+damping_curve = SubResource("Curve_4uv35")
+color_ramp = SubResource("Gradient_4uv35")
+
+[node name="right_particles" type="CPUParticles2D" parent="." unique_id=452790521]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 5.0
+gravity = Vector2(60, -60)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+damping_min = 4.0
+damping_max = 4.0
+damping_curve = SubResource("Curve_4uv35")
+color_ramp = SubResource("Gradient_4uv35")
+
+[node name="bottom_particles" type="CPUParticles2D" parent="." unique_id=482579242]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(90, 1)
+direction = Vector2(0, 1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+damping_min = 4.0
+damping_max = 4.0
+damping_curve = SubResource("Curve_4uv35")
+color_ramp = SubResource("Gradient_4uv35")
+
+[node name="left_particles" type="CPUParticles2D" parent="." unique_id=1511742480]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(-1, 0)
+spread = 5.0
+gravity = Vector2(-60, -60)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+damping_min = 4.0
+damping_max = 4.0
+damping_curve = SubResource("Curve_4uv35")
+color_ramp = SubResource("Gradient_4uv35")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1149987657]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=755875693]
-shape = SubResource("RectangleShape2D_aowjf")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

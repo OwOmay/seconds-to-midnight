@@ -6,7 +6,7 @@ extends Area2D
 @export var mail: Mail:
 	set(value):
 		mail = value
-		if is_inside_tree():
+		if is_inside_tree() and mail:
 			$Sprite2D.texture = mail.sprite
 
 var velocity := Vector2.ZERO
@@ -23,8 +23,18 @@ func _ready() -> void:
 		$Sprite2D.texture = mail.sprite
 		shape.size = mail.sprite.get_size()
 		$CollisionShape2D.shape = shape
+		
+		$top_particles.emission_rect_extents = Vector2(mail.sprite.get_width() * 0.5, 1.0)
+		$top_particles.position.y = -mail.sprite.get_height() * 0.5
+		$right_particles.emission_rect_extents = Vector2(1.0, mail.sprite.get_height() * 0.5)
+		$right_particles.position.x = mail.sprite.get_width() * 0.5
+		$bottom_particles.emission_rect_extents = Vector2(mail.sprite.get_width() * 0.5, 1.0)
+		$bottom_particles.position.y = mail.sprite.get_height() * 0.5
+		$left_particles.emission_rect_extents = Vector2(1.0, mail.sprite.get_height() * 0.5)
+		$left_particles.position.x = -mail.sprite.get_width() * 0.5
 	
-	MailManager.stamp.connect(_stamp)
+	if not Engine.is_editor_hint():
+		MailManager.stamp.connect(_stamp)
 
 func _stamp(pos: Vector2) -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_stamp and not is_stamped:
@@ -35,13 +45,13 @@ func _stamp(pos: Vector2) -> void:
 		is_stamped = true
 		Clock.time_remaining += mail.score
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
 	if not is_held:
-		position += velocity / delta
-		velocity *= 0.5
+		position += velocity * 40
+		velocity *= 0.8
 		position.x = clampf(position.x, -320, 320)
 		position.y = clampf(position.y, -180, 180)
 	
@@ -56,6 +66,12 @@ func _is_stamping() -> bool:
 		func(a: Area2D) -> bool: 
 			return a.name == &"Stamp"
 			)
+
+func release_particles() -> void:
+	$top_particles.restart()
+	$right_particles.restart()
+	$bottom_particles.restart()
+	$left_particles.restart() 
 
 func _on_mouse_entered() -> void:
 	is_hovered = true

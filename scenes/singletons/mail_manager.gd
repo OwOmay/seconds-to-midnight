@@ -43,6 +43,8 @@ func _drop_mail() -> void:
 	if held_mail:
 		GlobalAudio.play_random("flip")
 		
+		held_mail.release_particles()
+		
 		held_mail.is_held = false
 		held_mail.z_index = 0
 		held_mail = null
@@ -53,7 +55,7 @@ func _process(delta: float) -> void:
 		var mouse_pos := held_mail.get_viewport().get_mouse_position()
 		var target_pos := mouse_pos + hold_offset
 		
-		held_mail.velocity = (target_pos - held_mail.global_position) * delta
+		held_mail.velocity = held_mail.velocity.lerp((target_pos - held_mail.global_position) * delta, 0.2)
 		
 		held_mail.global_position = target_pos
 		held_mail.global_position.x = clampf(held_mail.global_position.x, -320, 320)
