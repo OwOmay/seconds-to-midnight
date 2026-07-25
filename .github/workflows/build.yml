@@ -1,0 +1,73 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build & upload
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: build & push (macos)
+        timeout-minutes: 15
+        if: matrix.os == 'macos-latest'
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          mkdir -p export/web export/linux export/macos
+          
+          curl -L -o godot_macos.zip "https://downloads.godotengine.org/?version=4.7.1&flavor=stable&slug=macos.universal.zip&platform=macos.universal"
+          unzip -q godot_macos.zip
+          
+          TEMPLATE_DIR="$HOME/Library/Application Support/Godot/export_templates/4.7.1.stable"
+          mkdir -p "$TEMPLATE_DIR"
+          curl -L -o templates.tpz "https://downloads.godotengine.org/?version=4.7.1&flavor=stable&slug=export_templates.tpz&platform=templates"
+          unzip -q templates.tpz -d "$TEMPLATE_DIR"
+          mv "$TEMPLATE_DIR/templates/"* "$TEMPLATE_DIR/"
+          
+          ./Godot.app/Contents/MacOS/Godot --headless --import
+          ./Godot.app/Contents/MacOS/Godot --headless --export-release "Web" export/web/index.html
+          ./Godot.app/Contents/MacOS/Godot --headless --export-release "Linux" export/linux/seconds-to-midnight.x86_64
+          ./Godot.app/Contents/MacOS/Godot --headless --export-release "macOS" export/macos/seconds.dmg
+          
+          curl -L -o butler.zip "https://broth.itch.zone/butler/darwin-universal/LATEST/archive.zip"
+          unzip -q butler.zip
+          chmod +x butler
+          
+          ./butler push export/web owomay/seconds-to-midnight:web
+          ./butler push export/linux owomay/seconds-to-midnight:linux
+          ./butler push export/macos owomay/seconds-to-midnight:osx
+
+      - name: build & upload (windows)
+        timeout-minutes: 15
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          mkdir -p export/windows
+          
+          curl -L -o godot_win.zip "https://downloads.godotengine.org/?version=4.7.1&flavor=stable&slug=win64.exe.zip&platform=windows.64"
+          unzip -q godot_win.zip
+          
+          TEMPLATE_DIR="$APPDATA/Godot/export_templates/4.7.1.stable"
+          mkdir -p "$TEMPLATE_DIR"
+          curl -L -o templates.tpz "https://downloads.godotengine.org/?version=4.7.1&flavor=stable&slug=export_templates.tpz&platform=templates"
+          unzip -q templates.tpz -d "$TEMPLATE_DIR"
+          mv "$TEMPLATE_DIR/templates/"* "$TEMPLATE_DIR/"
+          
+          ./Godot_v4.7.1-stable_win64_console.exe --headless --import
+          ./Godot_v4.7.1-stable_win64_console.exe --headless --export-release "Windows Desktop" export/windows/seconds-to-midnight.exe
+          
+          curl -L -o butler.zip "https://broth.itch.zone/butler/windows-amd64/LATEST/archive.zip"
+          unzip -q butler.zip
+          
+          ./butler.exe push export/windows owomay/seconds-to-midnight:windows
