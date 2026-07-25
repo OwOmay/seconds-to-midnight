@@ -14,9 +14,14 @@
 [ext_resource type="Resource" uid="uid://djgir2o5uxas8" path="res://data/mail/2.efforts_launched.tres" id="9_cvnul"]
 [ext_resource type="Resource" uid="uid://bqa4f07xut6f6" path="res://data/mail/2.hotline.tres" id="11_6i66t"]
 
+[sub_resource type="Resource" id="Resource_ynvfx"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("4_3dnqp")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
 [sub_resource type="Resource" id="Resource_aowjf"]
 script = ExtResource("1_dpyoj")
-mails = Array[ExtResource("2_h8oor")]([ExtResource("3_v62xa"), ExtResource("4_3dnqp"), ExtResource("4_kg15b"), ExtResource("5_dkiy7"), ExtResource("5_h8oor")])
+mails = Array[ExtResource("2_h8oor")]([ExtResource("3_v62xa"), ExtResource("4_kg15b"), ExtResource("5_dkiy7"), ExtResource("5_h8oor")])
 metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_pb6sh"]
@@ -26,5 +31,5 @@ metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [resource]
 script = ExtResource("1_8yjhw")
-pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_aowjf"), SubResource("Resource_pb6sh")])
+pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_ynvfx"), SubResource("Resource_aowjf"), SubResource("Resource_pb6sh")])
 metadata/_custom_type_script = "uid://dhvbdagmgqt61"

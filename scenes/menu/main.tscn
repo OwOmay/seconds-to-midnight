@@ -161,6 +161,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="settings/VBoxContainer/HBoxContainer" unique_id=1169856234]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "sfx volume"
 
@@ -174,6 +175,7 @@ step = 0.01
 layout_mode = 2
 
 [node name="Label" type="Label" parent="settings/VBoxContainer/HBoxContainer2" unique_id=2062544379]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "music volume"
 
