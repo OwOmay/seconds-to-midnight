@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ckxrfjn22sx8t"]
 
 [ext_resource type="Script" uid="uid://djenhipitb0me" path="res://scenes/main/mail.gd" id="1_bmk5e"]
-[ext_resource type="Texture2D" uid="uid://db78bpjlmmqad" path="res://assets/texture/particle2.png" id="2_4uv35"]
-[ext_resource type="Texture2D" uid="uid://d1yuo4d372tvw" path="res://assets/texture/particle.png" id="2_bmk5e"]
-[ext_resource type="Texture2D" uid="uid://dufluwq74smch" path="res://assets/texture/particle3.png" id="4_c2en3"]
-[ext_resource type="Texture2D" uid="uid://cyimptk4equxg" path="res://assets/texture/particle1.png" id="5_ygh1c"]
+[ext_resource type="Texture2D" uid="uid://k042qtf7d115" path="res://assets/texture/particleu.png" id="2_bmk5e"]
+[ext_resource type="Texture2D" uid="uid://df248505kwixs" path="res://assets/texture/particler.png" id="3_4uv35"]
+[ext_resource type="Texture2D" uid="uid://be0mku4yfqpuu" path="res://assets/texture/particled.png" id="4_c2en3"]
+[ext_resource type="Texture2D" uid="uid://d3jym0mdwypn4" path="res://assets/texture/particlel.png" id="5_ygh1c"]
 
 [sub_resource type="Curve" id="Curve_4uv35"]
 _limits = [0.0, 100.0, 0.0, 1.0]
@@ -22,7 +22,7 @@ script = ExtResource("1_bmk5e")
 
 [node name="top_particles" type="CPUParticles2D" parent="." unique_id=592332443]
 emitting = false
-texture = ExtResource("2_4uv35")
+texture = ExtResource("2_bmk5e")
 one_shot = true
 explosiveness = 1.0
 local_coords = true
@@ -36,13 +36,11 @@ initial_velocity_max = 120.0
 damping_min = 4.0
 damping_max = 4.0
 damping_curve = SubResource("Curve_4uv35")
-scale_amount_min = 0.5
-scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_4uv35")
 
 [node name="right_particles" type="CPUParticles2D" parent="." unique_id=452790521]
 emitting = false
-texture = ExtResource("2_bmk5e")
+texture = ExtResource("3_4uv35")
 one_shot = true
 explosiveness = 1.0
 local_coords = true
@@ -55,8 +53,6 @@ initial_velocity_max = 120.0
 damping_min = 4.0
 damping_max = 4.0
 damping_curve = SubResource("Curve_4uv35")
-scale_amount_min = 0.5
-scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_4uv35")
 
 [node name="bottom_particles" type="CPUParticles2D" parent="." unique_id=482579242]
@@ -75,8 +71,6 @@ initial_velocity_max = 120.0
 damping_min = 4.0
 damping_max = 4.0
 damping_curve = SubResource("Curve_4uv35")
-scale_amount_min = 0.5
-scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_4uv35")
 
 [node name="left_particles" type="CPUParticles2D" parent="." unique_id=1511742480]
@@ -95,8 +89,6 @@ initial_velocity_max = 120.0
 damping_min = 4.0
 damping_max = 4.0
 damping_curve = SubResource("Curve_4uv35")
-scale_amount_min = 0.5
-scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_4uv35")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1149987657]

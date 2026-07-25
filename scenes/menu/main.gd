@@ -45,7 +45,7 @@ func _on_hard_mouse_exited() -> void:
 	$play/Label.text = ""
 
 func _load_game(difficulty: int) -> void:
-	Clock.time_remaining = [90, 60, 45][difficulty]
+	Clock.time_remaining = [50, 30, 20][difficulty]
 	Clock.difficulty = difficulty
 	
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
