@@ -19,6 +19,7 @@ var is_moved := false
 var is_stamped := false
 
 var bin_can_delete := true
+var can_grab := false
 
 var time_took := 0.0
 
@@ -46,6 +47,8 @@ func stamp(pos: Vector2) -> void:
 		if not (is_equal_approx(clampf(to_local(pos).x, -86 + img.get_width() * 0.5, 86 - img.get_width() * 0.5), to_local(pos).x) and is_equal_approx(clampf(to_local(pos).y, -116 + img.get_height() * 0.5, 116 - img.get_height() * 0.5), to_local(pos).y)):
 			return
 		
+		can_grab = false
+		
 		Clock.finish_time(time_took)
 		
 		var stamp_sprite := Sprite2D.new()
@@ -63,7 +66,10 @@ func stamp(pos: Vector2) -> void:
 			$"../../Bin".deleting_nodes[self].kill()
 			$"../../Bin".deleting_nodes.erase(self)
 		fadeout_tween.tween_interval(1.0)
-		fadeout_tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 1.5)
+		fadeout_tween.set_ease(Tween.EASE_IN_OUT)
+		fadeout_tween.set_trans(Tween.TRANS_QUINT)
+		fadeout_tween.tween_property(self, "z_index", 99, 0)
+		fadeout_tween.tween_property(self, "position", position + Vector2(0, -600), 1.5)
 		fadeout_tween.tween_callback(func():
 			if MailManager.held_mail == self:
 				MailManager.held_mail = null
@@ -83,6 +89,10 @@ func _process(delta: float) -> void:
 		return
 	
 	time_took += delta
+	
+	if not can_grab:
+		is_hovered = false
+		MailManager.hovered_mails.erase(self)
 	
 	if not is_held and not is_intro:
 		position += velocity * 40

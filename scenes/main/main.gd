@@ -59,6 +59,7 @@ func _spawn_mail(is_retry := false) -> void:
 		pos_tween.set_trans(Tween.TRANS_CIRC)
 		pos_tween.tween_property(mail_node, "position", Vector2(-194, -4), 0.75)
 		pos_tween.tween_property(mail_node, "is_intro", false, 0)
+		pos_tween.tween_property(mail_node, "can_grab", true, 0)
 	elif not is_retry:
 		phase += 1
 		_spawn_mail(true)

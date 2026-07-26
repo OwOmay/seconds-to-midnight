@@ -43,9 +43,11 @@ position = Vector2(215, -67)
 position = Vector2(216, -102)
 
 [node name="Hand" parent="." unique_id=1013485801 instance=ExtResource("8_yyfjg")]
+z_index = 4096
 
 [node name="Label" type="Label" parent="." unique_id=1432535048]
 visible = false
+z_index = 4000
 offset_left = 153.0
 offset_top = -178.0
 offset_right = 317.0
