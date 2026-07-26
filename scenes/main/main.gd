@@ -42,11 +42,11 @@ func _spawn_mail(is_retry := false) -> void:
 	if mail:
 		GlobalAudio.play_random("drop")
 		
-		for unit in _get_unmoved():
-			var pos_tween_mini := unit.create_tween()
-			pos_tween_mini.set_ease(Tween.EASE_OUT)
-			pos_tween_mini.set_trans(Tween.TRANS_CIRC)
-			pos_tween_mini.tween_property(unit, "position", unit.position + Vector2(0, 32), 0.75)
+		#for unit in _get_unmoved():
+			#var pos_tween_mini := unit.create_tween()
+			#pos_tween_mini.set_ease(Tween.EASE_OUT)
+			#pos_tween_mini.set_trans(Tween.TRANS_CIRC)
+			#pos_tween_mini.tween_property(unit, "position", unit.position + Vector2(0, 32), 0.75)
 		
 		var mail_node: Node2D = preload("res://scenes/main/mail.tscn").instantiate()
 		

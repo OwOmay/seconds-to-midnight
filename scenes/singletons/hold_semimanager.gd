@@ -8,7 +8,6 @@ var hold_offset := Vector2.ZERO
 var use_stamp := false
 var is_stamping := false
 
-@warning_ignore("unused_signal")
 signal stamp(pos: Vector2)
 
 @warning_ignore("unused_signal")

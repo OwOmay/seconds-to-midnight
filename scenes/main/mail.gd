@@ -13,7 +13,7 @@ extends Area2D
 var velocity := Vector2.ZERO
 var is_held := false
 var is_hovered := false
-var is_intro := false
+var is_intro := true
 
 var is_moved := false
 var is_stamped := false
