@@ -44,6 +44,8 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_deletion_finished(area: Area2D) -> void:
 	if deleting_nodes.has(area):
+		Clock.finish_time(area.time_took)
+		
 		# employee number four-two-seven
 		if is_equal_approx(area.mail.score, 427):
 			$"..".win_game.emit()

@@ -4,8 +4,15 @@ var time_remaining := 30.0
 var temp_time := 0.0
 var is_running := false
 var difficulty := 0
+var length_mod := 1.0
+
+var use_new_balance := true
 
 signal bust
+
+func finish_time(time_took: float) -> void:
+	if not is_running and use_new_balance:
+		length_mod = clampf(10 / time_took, 0.5, 2)
 
 func get_time() -> float:
 	return time_remaining + temp_time
@@ -17,9 +24,9 @@ func _add_time(time: float) -> void:
 		
 		var mult: float
 		if time < 0:
-			mult = [0.4, 0.6, 0.8][difficulty]
+			mult = [0.4, 0.6, 0.8][difficulty] * length_mod
 		else:
-			mult = [3, 2, 1][difficulty]
+			mult = [3, 2, 1][difficulty] / length_mod
 		
 		var temp_tween := create_tween()
 		temp_tween.set_ease(Tween.EASE_OUT)
@@ -41,4 +48,4 @@ func _add_time(time: float) -> void:
 
 func _process(delta: float) -> void:
 	if is_running:
-		time_remaining -= delta
+		time_remaining -= delta * length_mod

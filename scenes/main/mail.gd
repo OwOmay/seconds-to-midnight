@@ -20,6 +20,8 @@ var is_stamped := false
 
 var bin_can_delete := true
 
+var time_took := 0.0
+
 func _ready() -> void:
 	if mail and mail.sprite:
 		$Sprite2D.texture = [preload("res://assets/texture/News_Base_1.webp"), preload("res://assets/texture/News_Base_2.webp"), preload("res://assets/texture/News_Base_3.webp")][randi() % 3]
@@ -39,6 +41,8 @@ func _ready() -> void:
 
 func stamp(pos: Vector2) -> void:
 	if not is_stamped:
+		Clock.finish_time(time_took)
+		
 		var stamp_sprite := Sprite2D.new()
 		stamp_sprite.texture = preload("res://assets/texture/Stamp_Mark.png")
 		add_child(stamp_sprite)
@@ -65,15 +69,15 @@ func stamp(pos: Vector2) -> void:
 		fadeout_tween.tween_callback($"../..".mail_finished)
 		fadeout_tween.tween_callback(queue_free)
 		
-		MailManager.stamp_success.emit()
-		
 		# employee number four-two-seven
 		if is_equal_approx(mail.score, 427):
 			$"../..".win_game.emit()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
+	
+	time_took += delta
 	
 	if not is_held and not is_intro:
 		position += velocity * 40
