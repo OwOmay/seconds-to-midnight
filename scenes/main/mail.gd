@@ -62,8 +62,6 @@ func stamp(pos: Vector2) -> void:
 				MailManager.hovered_mails.erase(self)
 			if MailManager.stamping_mails.has(self):
 				MailManager.stamping_mails.erase(self))
-		fadeout_tween.tween_property(Clock, "is_running", true, 0)
-		fadeout_tween.tween_callback($"../../Timer".start)
 		fadeout_tween.tween_callback($"../..".mail_finished)
 		fadeout_tween.tween_callback(queue_free)
 		

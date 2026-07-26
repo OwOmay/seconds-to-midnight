@@ -52,4 +52,6 @@ offset_right = 317.0
 offset_bottom = -155.0
 text = "time remaining: 9999"
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2043377215]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

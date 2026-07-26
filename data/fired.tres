@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("1_xfcvv")
 sprite = ExtResource("2_ufr8k")
+score = 427.0
 metadata/_custom_type_script = "uid://mn6cxhl5flei"

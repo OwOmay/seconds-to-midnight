@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 		MailManager.is_stamping = true
 		
 		offset_tween = create_tween()
-		offset_tween.tween_property($Stamp, "position", Vector2(0, -40), 0.1)
+		offset_tween.tween_property($Stamp, "position", Vector2(0, -32), 0.1)
 	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and (is_held or cancel_current):
 		if is_held:
@@ -70,7 +70,7 @@ func _process(_delta: float) -> void:
 		global_position.x = clampf(global_position.x, -320, 320)
 		global_position.y = clampf(global_position.y, -180, 180)
 	
-	$StampShadow.modulate.a = 0.8 - $Stamp.position.y / -80
+	$StampShadow.modulate.a = 0.7 + ($Stamp.position.y * 0.015625) # 1/64
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == &"Hand":

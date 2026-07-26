@@ -6,17 +6,28 @@ extends Node2D
 @export var use_submit_drop := false
 
 var phase := 0
-
+var is_started := false
 var mail_picker: Sequence
+
+signal win_game
 
 func _ready() -> void:
 	mail_picker = load("res://data/main.tres")
 	_spawn_mail()
 	
-	GlobalAudio.music_normal()
-	
 	$Timer.wait_time = [15, 10, 8][Clock.difficulty]
 	$Timer.stop()
+	
+	Clock.bust.connect(GlobalAudio.music_stop)
+	win_game.connect(_on_win)
+
+func _on_win() -> void:
+	var fade_tween := create_tween()
+	fade_tween.set_ease(Tween.EASE_OUT)
+	fade_tween.set_trans(Tween.TRANS_CIRC)
+	fade_tween.tween_interval(1)
+	fade_tween.tween_property($CanvasModulate, "color", Color(0, 0, 0), 2.5)
+	fade_tween.tween_callback(get_tree().change_scene_to_file.bind("res://scenes/menu/win.tscn"))
 
 func _get_unmoved() -> Array[Node2D]:
 	var unmoved: Array[Node2D] = []
@@ -61,17 +72,25 @@ func _process(_delta: float) -> void:
 		GlobalAudio.music_normal()
 	
 	if Clock.time_remaining < 0:
-		get_tree().paused = true
 		GlobalAudio.music_stop()
 		GlobalAudio.play("boom")
-		await get_tree().create_timer(5.5).timeout
-		get_tree().paused = false
-		get_tree().change_scene_to_file("res://scenes/menu/end.tscn")
+		var fade_tween := create_tween()
+		fade_tween.set_ease(Tween.EASE_OUT)
+		fade_tween.set_trans(Tween.TRANS_CIRC)
+		fade_tween.tween_interval(3)
+		fade_tween.tween_property($CanvasModulate, "color", Color(0, 0, 0), 2.5)
+		fade_tween.tween_callback(get_tree().change_scene_to_file.bind("res://scenes/menu/end.tscn"))
 
 func _on_timer_timeout() -> void:
 	if not use_submit_drop:
 		_spawn_mail()
 
 func mail_finished() -> void:
+	if not is_started:
+		GlobalAudio.music_normal()
+		Clock.is_running = true
+		$Timer.start()
+		is_started = true
+	
 	if use_submit_drop:
 		_spawn_mail()

@@ -5,6 +5,7 @@ extends Resource
 @export var pools: Array[Pool]
 
 func pick(pool: int) -> Mail:
+	randomize()
 	while spam.mails.size() != 0:
 		var spam_message := spam.pick()
 		spam.mails.erase(spam_message)

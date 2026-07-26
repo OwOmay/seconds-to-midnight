@@ -111,6 +111,7 @@ texture_hover = ExtResource("12_3m0x3")
 ignore_texture_size = true
 
 [node name="play" type="Control" parent="." unique_id=209488726]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

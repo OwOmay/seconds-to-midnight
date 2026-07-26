@@ -44,8 +44,6 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_deletion_finished(area: Area2D) -> void:
 	if deleting_nodes.has(area):
-		Clock.is_running = true
-		$"../Timer".start()
 		$"..".mail_finished()
 		deleting_nodes.erase(area)
 		
@@ -55,6 +53,6 @@ func _on_deletion_finished(area: Area2D) -> void:
 		MailManager.stamping_mails.erase(area)
 		if MailManager.held_mail == area:
 			MailManager.held_mail = null
-			
+		
 		if is_instance_valid(area):
 			area.queue_free()

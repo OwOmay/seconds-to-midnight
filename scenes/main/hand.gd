@@ -6,9 +6,16 @@ var hand_mode := HAND_MODE.OPEN
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Clock.bust.connect(_on_pop)
+
+func _on_pop() -> void:
+	await get_tree().create_timer(2.5).timeout
+	$AnimatedSprite2D.hide()
+	$AnimatedSprite2D2.show()
+	$AnimatedSprite2D2.play()
 
 func _process(_delta: float) -> void:
-	$AnimatedSprite2D.frame = floori(Clock.time_remaining / 90.0 * 24.0)
+	$AnimatedSprite2D.frame = floori(Clock.time_remaining / 90.0 * 24.0) % 24
 	
 	position = get_viewport().get_mouse_position() - Vector2(320, 180)
 	position.x = clampf(position.x, -280, 272)
