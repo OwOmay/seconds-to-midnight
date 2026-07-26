@@ -7,7 +7,8 @@ extends Area2D
 	set(value):
 		mail = value
 		if is_inside_tree() and mail:
-			$Sprite2D.texture = mail.sprite
+			$Sprite2D.texture = [preload("res://assets/texture/News_Base_1.webp"), preload("res://assets/texture/News_Base_2.webp"), preload("res://assets/texture/News_Base_3.webp")][randi() % 3]
+			$Sprite2D2.texture = mail.sprite
 
 var velocity := Vector2.ZERO
 var is_held := false
@@ -16,6 +17,8 @@ var is_intro := false
 
 var is_moved := false
 var is_stamped := false
+
+var bin_can_delete := true
 
 func _ready() -> void:
 	if mail and mail.sprite:
@@ -42,6 +45,27 @@ func stamp(pos: Vector2) -> void:
 		stamp_sprite.global_position = pos
 		is_stamped = true
 		Clock._add_time(mail.score)
+		
+		var fadeout_tween := create_tween()
+		bin_can_delete = false
+		if $"../../Bin".checking.has(self):
+			$"../../Bin".checking.erase(self)
+		if $"../../Bin".deleting_nodes.has(self):
+			$"../../Bin".deleting_nodes[self].kill()
+			$"../../Bin".deleting_nodes.erase(self)
+		fadeout_tween.tween_interval(1.0)
+		fadeout_tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 1.5)
+		fadeout_tween.tween_callback(func():
+			if MailManager.held_mail == self:
+				MailManager.held_mail = null
+			if MailManager.hovered_mails.has(self):
+				MailManager.hovered_mails.erase(self)
+			if MailManager.stamping_mails.has(self):
+				MailManager.stamping_mails.erase(self))
+		fadeout_tween.tween_property(Clock, "is_running", true, 0)
+		fadeout_tween.tween_callback($"../../Timer".start)
+		fadeout_tween.tween_callback($"../..".mail_finished)
+		fadeout_tween.tween_callback(queue_free)
 		
 		MailManager.stamp_success.emit()
 
@@ -73,12 +97,13 @@ func release_particles() -> void:
 	$bottom_particles.restart()
 	$left_particles.restart() 
 
-func _on_mouse_entered() -> void:
-	is_hovered = true
-	if MailManager and not MailManager.hovered_mails.has(self):
-		MailManager.hovered_mails.append(self)
+func _on_area_entered(area: Area2D) -> void:
+	if area.name == &"Hand":
+		is_hovered = true
+		if not MailManager.hovered_mails.has(self):
+			MailManager.hovered_mails.append(self)
 
-func _on_mouse_exited() -> void:
-	is_hovered = false
-	if MailManager:
+func _on_area_exited(area: Area2D) -> void:
+	if area.name == &"Hand":
+		is_hovered = false
 		MailManager.hovered_mails.erase(self)

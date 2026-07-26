@@ -7,9 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://tbjjymc4j31y" path="res://scenes/main/antibin.tscn" id="4_hujxm"]
 [ext_resource type="PackedScene" uid="uid://bjwkdnapkc7xg" path="res://scenes/main/stamp.tscn" id="5_6q06x"]
 [ext_resource type="Texture2D" uid="uid://0pmmvcmqp776" path="res://assets/texture/Slot_top.png" id="6_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://c3rqqio1a4ois" path="res://scenes/main/hand.tscn" id="8_yyfjg"]
 
 [node name="Main" type="Node2D" unique_id=757727778]
 script = ExtResource("1_l3cfh")
+use_submit_drop = true
+
+[node name="Timer" type="Timer" parent="." unique_id=687293054]
+wait_time = 10.0
+autostart = true
 
 [node name="Desk" type="Sprite2D" parent="." unique_id=1002419233]
 texture = ExtResource("2_ow5a4")
@@ -36,11 +42,10 @@ position = Vector2(215, -67)
 [node name="Stamp" parent="." unique_id=901818596 instance=ExtResource("5_6q06x")]
 position = Vector2(216, -102)
 
-[node name="Timer" type="Timer" parent="." unique_id=687293054]
-wait_time = 10.0
-autostart = true
+[node name="Hand" parent="." unique_id=1013485801 instance=ExtResource("8_yyfjg")]
 
 [node name="Label" type="Label" parent="." unique_id=1432535048]
+visible = false
 offset_left = 153.0
 offset_top = -178.0
 offset_right = 317.0

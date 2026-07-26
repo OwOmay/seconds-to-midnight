@@ -6,6 +6,7 @@ var held_mail: Node2D
 var hold_offset := Vector2.ZERO
 
 var use_stamp := false
+var is_stamping := false
 
 @warning_ignore("unused_signal")
 signal stamp(pos: Vector2)
@@ -59,8 +60,7 @@ func _drop_mail() -> void:
 func _process(delta: float) -> void:
 	if held_mail and is_instance_valid(held_mail):
 		if held_mail.is_inside_tree():
-			var mouse_pos := held_mail.get_viewport().get_mouse_position()
-			var target_pos := mouse_pos + hold_offset
+			var target_pos := Coordination.mouse_pos + hold_offset
 			
 			held_mail.velocity = held_mail.velocity.lerp((target_pos - held_mail.global_position) * delta, 0.2)
 			

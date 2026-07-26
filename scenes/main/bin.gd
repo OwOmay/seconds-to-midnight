@@ -3,7 +3,7 @@ extends Area2D
 var deleting_nodes: Dictionary[Area2D, Tween] = {}
 var checking: Array[Area2D] = []
 
-func has_antibin(a):
+func has_antibin(a: Area2D):
 	return a.name == &"Antibin"
 
 func _process(_delta: float) -> void:
@@ -19,13 +19,14 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _check_area(area: Area2D) -> void:
 	if "mail" in area and not deleting_nodes.has(area):
-		var tween := create_tween()
-		tween.set_trans(Tween.TRANS_CUBIC)
-		deleting_nodes[area] = tween
-		
-		tween.tween_property(area, "modulate", Color(1, 1, 1, 0), 0.75)
-		
-		tween.finished.connect(_on_deletion_finished.bind(area))
+		if area.bin_can_delete:
+			var tween := create_tween()
+			tween.set_trans(Tween.TRANS_CUBIC)
+			deleting_nodes[area] = tween
+			
+			tween.tween_property(area, "modulate", Color(1, 1, 1, 0), 0.75)
+			
+			tween.finished.connect(_on_deletion_finished.bind(area))
 
 func _on_area_exited(area: Area2D) -> void:
 	if checking.has(area):
@@ -43,6 +44,9 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_deletion_finished(area: Area2D) -> void:
 	if deleting_nodes.has(area):
+		Clock.is_running = true
+		$"../Timer".start()
+		$"..".mail_finished()
 		deleting_nodes.erase(area)
 		
 		GlobalAudio.play_random("crumple")

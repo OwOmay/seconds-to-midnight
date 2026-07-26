@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if OS.get_name() == "Web":
 		$CenterContainer/VBoxContainer/quit.hide()
 
@@ -45,7 +46,7 @@ func _on_hard_mouse_exited() -> void:
 	$play/Label.text = ""
 
 func _load_game(difficulty: int) -> void:
-	Clock.time_remaining = [50, 30, 20][difficulty]
+	Clock.time_remaining = [80, 50, 30][difficulty]
 	Clock.difficulty = difficulty
 	
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")

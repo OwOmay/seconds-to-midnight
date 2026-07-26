@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Mail" format=3 uid="uid://divnx44qe8p0a"]
+
+[ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="1_iucyv"]
+[ext_resource type="Texture2D" uid="uid://c0vmr4g18uug8" path="res://assets/texture/mail/3._stevens_evades_capture.webp" id="2_ujn77"]
+
+[resource]
+script = ExtResource("1_iucyv")
+sprite = ExtResource("2_ujn77")
+score = -5.0
+metadata/_custom_type_script = "uid://mn6cxhl5flei"

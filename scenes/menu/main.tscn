@@ -3,7 +3,33 @@
 [ext_resource type="Script" uid="uid://qepqy47wmw51" path="res://scenes/menu/main.gd" id="1_rrmte"]
 [ext_resource type="Script" uid="uid://cv3nmp2epme4g" path="res://scenes/menu/settings.gd" id="2_omghv"]
 [ext_resource type="PackedScene" uid="uid://dms0g03aovfda" path="res://scenes/menu/background.tscn" id="2_r8hr5"]
+[ext_resource type="Texture2D" uid="uid://bu6stqqr1iqei" path="res://assets/texture/mail/Logo_PAPER.webp" id="4_box2j"]
 [ext_resource type="Texture2D" uid="uid://cspr5y0u71s4f" path="res://assets/texture/News_Base_3.webp" id="4_ynvfx"]
+[ext_resource type="Texture2D" uid="uid://dvalmlei0m6ul" path="res://assets/texture/ui/Button_PLAY.webp" id="5_gmxck"]
+[ext_resource type="Texture2D" uid="uid://d2ynggb3el5wk" path="res://assets/texture/ui/Button_SETTINGS.webp" id="6_ec7jh"]
+[ext_resource type="Texture2D" uid="uid://cs1exvhl5l0nt" path="res://assets/texture/ui/Button_PLAY_hovered.png" id="6_fu361"]
+[ext_resource type="Texture2D" uid="uid://dmhbyl5d8m3lh" path="res://assets/texture/ui/Button_CREDITS.webp" id="7_ijfal"]
+[ext_resource type="Texture2D" uid="uid://b3b54kwasmhs2" path="res://assets/texture/ui/Button_SETTINGS_hovered.png" id="8_6gkmp"]
+[ext_resource type="Texture2D" uid="uid://eesy3l2s6n77" path="res://assets/texture/ui/Button_QUIT.webp" id="8_iloae"]
+[ext_resource type="Texture2D" uid="uid://cnk04760adad4" path="res://assets/texture/ui/Button_BACK.webp" id="9_lodd7"]
+[ext_resource type="Texture2D" uid="uid://xsas4s6lhxo5" path="res://assets/texture/ui/Button_CREDITS_hovered.png" id="10_6gkmp"]
+[ext_resource type="Texture2D" uid="uid://di1573eo1owyq" path="res://assets/texture/ui/Button_BACK_hovered.png" id="10_aydri"]
+[ext_resource type="Texture2D" uid="uid://dd3p74q534npb" path="res://assets/texture/ui/slider.png" id="11_ll80b"]
+[ext_resource type="Texture2D" uid="uid://ddnno3mbym5nm" path="res://assets/texture/ui/Button_QUIT_hovered.png" id="12_3m0x3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yk1o"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5882353, 0.45882353, 0.32941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll80b"]
+bg_color = Color(0.91764706, 0.78431374, 0.65882355, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5882353, 0.45882353, 0.32941177, 1)
 
 [node name="Main" type="Control" unique_id=634024317]
 layout_mode = 3
@@ -25,13 +51,13 @@ offset_right = 223.0
 offset_bottom = 313.0
 texture = ExtResource("4_ynvfx")
 
-[node name="Label" type="Label" parent="TextureRect" unique_id=187274122]
+[node name="LogoPaper" type="TextureRect" parent="." unique_id=1644306905]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 109.0
-offset_right = 175.0
-offset_bottom = 132.0
-text = "seconds to midnight"
+offset_left = 46.0
+offset_top = 80.0
+offset_right = 203.0
+offset_bottom = 300.0
+texture = ExtResource("4_box2j")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=593739308]
 layout_mode = 1
@@ -44,24 +70,47 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=415915855]
 layout_mode = 2
 
-[node name="play" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1032933106]
+[node name="play" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=1486612691]
+custom_minimum_size = Vector2(80, 42)
 layout_mode = 2
-text = "play"
+offset_transform_enabled = true
+offset_transform_position = Vector2(-24, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_gmxck")
+texture_hover = ExtResource("6_fu361")
+ignore_texture_size = true
 
-[node name="settings" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1522201593]
+[node name="settings" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=439440161]
+custom_minimum_size = Vector2(80, 35)
 layout_mode = 2
-text = "settings"
+offset_transform_enabled = true
+offset_transform_position = Vector2(-24, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_ec7jh")
+texture_hover = ExtResource("8_6gkmp")
+ignore_texture_size = true
 
-[node name="credits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=996459314]
+[node name="credits" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=1254832214]
+custom_minimum_size = Vector2(80, 39)
 layout_mode = 2
-text = "credits"
+offset_transform_enabled = true
+offset_transform_position = Vector2(-24, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_ijfal")
+texture_hover = ExtResource("10_6gkmp")
+ignore_texture_size = true
 
-[node name="quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2052852665]
+[node name="quit" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=2052138288]
+custom_minimum_size = Vector2(80, 42)
 layout_mode = 2
-text = "quit"
+offset_transform_enabled = true
+offset_transform_position = Vector2(-24, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_iloae")
+texture_hover = ExtResource("12_3m0x3")
+ignore_texture_size = true
 
 [node name="play" type="Control" parent="." unique_id=209488726]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,12 +128,24 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.5019608)
 
 [node name="Label" type="Label" parent="play" unique_id=1680503436]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 312.0
-offset_right = 580.0
-offset_bottom = 335.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -48.0
+offset_right = -100.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(4, 4)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 4
+text = "the intended level of difficulty."
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="play" unique_id=1773301917]
 layout_mode = 1
@@ -105,19 +166,71 @@ theme_override_constants/separation = 16
 [node name="easy" type="Button" parent="play/MarginContainer/HBoxContainer" unique_id=1770004746]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "easy"
+mouse_default_cursor_shape = 2
+
+[node name="Label" type="Label" parent="play/MarginContainer/HBoxContainer/easy" unique_id=12753860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -12.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 5
+text = "Easy"
 
 [node name="normal" type="Button" parent="play/MarginContainer/HBoxContainer" unique_id=1220175868]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "normal"
+mouse_default_cursor_shape = 2
+
+[node name="Label" type="Label" parent="play/MarginContainer/HBoxContainer/normal" unique_id=151924864]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -14.0
+offset_right = -18.5
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 5
+text = "Normal"
 
 [node name="hard" type="Button" parent="play/MarginContainer/HBoxContainer" unique_id=1133399277]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "hard"
+mouse_default_cursor_shape = 2
 
-[node name="back" type="Button" parent="play" unique_id=2007346060]
+[node name="Label" type="Label" parent="play/MarginContainer/HBoxContainer/hard" unique_id=1372250844]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -14.0
+offset_right = -12.5
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 5
+text = "Hard"
+
+[node name="back" type="TextureButton" parent="play" unique_id=1476441971]
+custom_minimum_size = Vector2(77, 36)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 313.0
@@ -125,7 +238,12 @@ offset_right = 61.0
 offset_bottom = 344.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "back"
+offset_transform_enabled = true
+offset_transform_position = Vector2(-26, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_lodd7")
+texture_hover = ExtResource("10_aydri")
+ignore_texture_size = true
 
 [node name="settings" type="Control" parent="." unique_id=1417912238]
 visible = false
@@ -160,32 +278,61 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="settings/VBoxContainer" unique_id=897762642]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="settings/VBoxContainer/HBoxContainer" unique_id=1169856234]
-custom_minimum_size = Vector2(128, 0)
+[node name="Control" type="Control" parent="settings/VBoxContainer/HBoxContainer" unique_id=1365614023]
+custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
-text = "sfx volume"
+
+[node name="Label" type="Label" parent="settings/VBoxContainer/HBoxContainer/Control" unique_id=1169856234]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 6.0
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 5
+text = "SFX Volume"
 
 [node name="HSlider" type="HSlider" parent="settings/VBoxContainer/HBoxContainer" unique_id=410105273]
-custom_minimum_size = Vector2(128, 24)
+custom_minimum_size = Vector2(148, 24)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("11_ll80b")
+theme_override_icons/grabber_highlight = ExtResource("11_ll80b")
+theme_override_icons/grabber_disabled = ExtResource("11_ll80b")
+theme_override_styles/slider = SubResource("StyleBoxFlat_8yk1o")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ll80b")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ll80b")
 max_value = 1.0
 step = 0.01
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer" unique_id=1395176704]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="settings/VBoxContainer/HBoxContainer2" unique_id=2062544379]
-custom_minimum_size = Vector2(128, 0)
+[node name="Control" type="Control" parent="settings/VBoxContainer/HBoxContainer2" unique_id=361137505]
+custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
-text = "music volume"
+
+[node name="Label" type="Label" parent="settings/VBoxContainer/HBoxContainer2/Control" unique_id=621504244]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 7.0
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 5
+text = "Music Volume"
 
 [node name="HSlider" type="HSlider" parent="settings/VBoxContainer/HBoxContainer2" unique_id=1412273930]
-custom_minimum_size = Vector2(128, 24)
+custom_minimum_size = Vector2(148, 24)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("11_ll80b")
+theme_override_icons/grabber_highlight = ExtResource("11_ll80b")
+theme_override_icons/grabber_disabled = ExtResource("11_ll80b")
+theme_override_styles/slider = SubResource("StyleBoxFlat_8yk1o")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ll80b")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ll80b")
 max_value = 1.0
 step = 0.01
 
-[node name="back" type="Button" parent="settings" unique_id=770817860]
+[node name="back" type="TextureButton" parent="settings" unique_id=1760907721]
+custom_minimum_size = Vector2(77, 36)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 313.0
@@ -193,7 +340,12 @@ offset_right = 61.0
 offset_bottom = 344.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "back"
+offset_transform_enabled = true
+offset_transform_position = Vector2(-26, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_lodd7")
+texture_hover = ExtResource("10_aydri")
+ignore_texture_size = true
 
 [node name="credits" type="Control" parent="." unique_id=888260683]
 visible = false
@@ -213,34 +365,45 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="back" type="Button" parent="credits" unique_id=1109307683]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 313.0
-offset_right = 61.0
-offset_bottom = 344.0
-text = "back"
-
 [node name="Label" type="RichTextLabel" parent="credits" unique_id=651070403]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -46.0
-offset_bottom = 46.0
+anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -288.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(5, 5)
+theme_override_font_sizes/normal_font_size = 5
+theme_override_font_sizes/bold_font_size = 5
+theme_override_font_sizes/bold_italics_font_size = 5
+theme_override_font_sizes/italics_font_size = 5
+theme_override_font_sizes/mono_font_size = 5
 bbcode_enabled = true
 text = "[center]programming, sound & music: owomay
 art, story & design: bucket o' beef
 
 made in 4 days for the 2026 gmtk game jam
 
-[font_size=\"12\"]third party content:
+[font_size=\"4\"]third party content:
 [url=\"https://en.wikipedia.org/wiki/File:Grandfather_Clock_Ticking.ogg\"]Grandfather Clock Ticking[/url], CC-BY-SA by Jud McCranie, via Wikipedia[/font_size]
 [/center]"
 fit_content = true
+
+[node name="back" type="TextureButton" parent="credits" unique_id=1830247072]
+custom_minimum_size = Vector2(77, 36)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 313.0
+offset_right = 146.0
+offset_bottom = 355.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-26, 0)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_lodd7")
+texture_hover = ExtResource("10_aydri")
+ignore_texture_size = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
@@ -259,5 +422,5 @@ fit_content = true
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/HSlider" to="settings" method="_on_sfx_volume_value_changed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/HSlider" to="settings" method="_on_music_volume_value_changed"]
 [connection signal="pressed" from="settings/back" to="." method="_on_settings_back_pressed"]
-[connection signal="pressed" from="credits/back" to="." method="_on_credits_back_pressed"]
 [connection signal="meta_clicked" from="credits/Label" to="." method="_on_credits_meta_clicked"]
+[connection signal="pressed" from="credits/back" to="." method="_on_credits_back_pressed"]

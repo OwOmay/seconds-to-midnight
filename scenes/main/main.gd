@@ -3,6 +3,8 @@ extends Node2D
 @onready var mail_container := $Mails
 @onready var mail_first := $Mails/first
 
+@export var use_submit_drop := false
+
 var phase := 0
 
 var mail_picker: Sequence
@@ -10,13 +12,11 @@ var mail_picker: Sequence
 func _ready() -> void:
 	mail_picker = load("res://data/main.tres")
 	_spawn_mail()
-	Clock.is_running = true
 	
 	GlobalAudio.music_normal()
 	
 	$Timer.wait_time = [15, 10, 8][Clock.difficulty]
 	$Timer.stop()
-	$Timer.start()
 
 func _get_unmoved() -> Array[Node2D]:
 	var unmoved: Array[Node2D] = []
@@ -69,4 +69,9 @@ func _process(_delta: float) -> void:
 		get_tree().change_scene_to_file("res://scenes/menu/end.tscn")
 
 func _on_timer_timeout() -> void:
-	_spawn_mail()
+	if not use_submit_drop:
+		_spawn_mail()
+
+func mail_finished() -> void:
+	if use_submit_drop:
+		_spawn_mail()

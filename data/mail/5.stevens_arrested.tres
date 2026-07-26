@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Mail" format=3 uid="uid://c4gecvyq4fx7e"]
+
+[ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="1_ki3fv"]
+[ext_resource type="Texture2D" uid="uid://dwwhxf05hn51l" path="res://assets/texture/mail/5._Stevens_arrested.webp" id="2_y5nf1"]
+
+[resource]
+script = ExtResource("1_ki3fv")
+sprite = ExtResource("2_y5nf1")
+metadata/_custom_type_script = "uid://mn6cxhl5flei"

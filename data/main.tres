@@ -3,17 +3,39 @@
 [ext_resource type="Script" uid="uid://dhvbdagmgqt61" path="res://data/scripts/sequence.gd" id="1_8yjhw"]
 [ext_resource type="Script" uid="uid://dqn3b05ngv1up" path="res://data/scripts/pool.gd" id="1_dpyoj"]
 [ext_resource type="Script" uid="uid://mn6cxhl5flei" path="res://data/scripts/mail.gd" id="2_h8oor"]
+[ext_resource type="Resource" uid="uid://f6rtsqyk3krj" path="res://data/manual.tres" id="3_k5g8n"]
 [ext_resource type="Resource" uid="uid://bx12xde4e1vwg" path="res://data/mail/1.civillian_effort.tres" id="3_v62xa"]
 [ext_resource type="Resource" uid="uid://d1l8xbqb05wsc" path="res://data/mail/1.clock_comes_to_life.tres" id="4_3dnqp"]
 [ext_resource type="Resource" uid="uid://cydecskfr3fku" path="res://data/mail/1.economy.tres" id="4_kg15b"]
+[ext_resource type="Resource" uid="uid://qe0eqhmairlr" path="res://data/mail/1.city_expansion.tres" id="4_spmm8"]
 [ext_resource type="Resource" uid="uid://qc00omn1bs7u" path="res://data/mail/1.evil_reader.tres" id="5_dkiy7"]
 [ext_resource type="Resource" uid="uid://bkueqss3tc51r" path="res://data/mail/1.mr_kitty.tres" id="5_h8oor"]
 [ext_resource type="Resource" uid="uid://w8uw36j0yvlc" path="res://data/mail/2.fish.tres" id="7_ibbog"]
 [ext_resource type="Resource" uid="uid://cos2bp3hdlepm" path="res://data/mail/2.mr_kitty.tres" id="8_3dnqp"]
 [ext_resource type="Resource" uid="uid://bnmnsnsnxum45" path="res://data/mail/2.coalition.tres" id="8_jjg1t"]
 [ext_resource type="Resource" uid="uid://djgir2o5uxas8" path="res://data/mail/2.efforts_launched.tres" id="9_cvnul"]
+[ext_resource type="Resource" uid="uid://c5nwhe7w38rhv" path="res://data/mail/1.news_ban.tres" id="9_qdo4l"]
+[ext_resource type="Resource" uid="uid://cmyklasmnooyo" path="res://data/mail/2.city_expansion.tres" id="10_vjrb2"]
 [ext_resource type="Resource" uid="uid://bqa4f07xut6f6" path="res://data/mail/2.hotline.tres" id="11_6i66t"]
-[ext_resource type="Resource" uid="uid://dt5mfrm3dvxu7" path="res://data/mail/bust.tres" id="13_jjg1t"]
+[ext_resource type="Resource" uid="uid://cuo35uiugly5g" path="res://data/mail/2.gabriel_stevens.tres" id="14_cpq2r"]
+[ext_resource type="Resource" uid="uid://djv0ulmfn48hy" path="res://data/mail/2.parking.tres" id="17_src53"]
+[ext_resource type="Resource" uid="uid://cd2xf1vyyx1h6" path="res://data/mail/3.efforts_unsuccessful.tres" id="18_plb6b"]
+[ext_resource type="Resource" uid="uid://b6ib5i52aucxl" path="res://data/mail/3.mr_kitty_saved.tres" id="19_k5g8n"]
+[ext_resource type="Resource" uid="uid://c66q68hsdee8h" path="res://data/mail/3.parking_cancelled.tres" id="20_q2238"]
+[ext_resource type="Resource" uid="uid://divnx44qe8p0a" path="res://data/mail/3.steven_evades.tres" id="21_fnl1y"]
+[ext_resource type="Resource" uid="uid://cbrt5po6tqt1o" path="res://data/mail/4.expansion_cancelled.tres" id="22_cpq2r"]
+[ext_resource type="Resource" uid="uid://fjc06hxbb6q5" path="res://data/mail/4.foreign_aid.tres" id="23_src53"]
+[ext_resource type="Resource" uid="uid://b8iivqwa1dcy0" path="res://data/mail/4.kitty_inspires.tres" id="24_plb6b"]
+[ext_resource type="Resource" uid="uid://bx821uy40pofr" path="res://data/mail/5.threat_over.tres" id="25_plb6b"]
+[ext_resource type="Resource" uid="uid://c4gecvyq4fx7e" path="res://data/mail/5.stevens_arrested.tres" id="26_k5g8n"]
+[ext_resource type="Resource" uid="uid://xlgl5psj0hhp" path="res://data/fired.tres" id="28_q2238"]
+[ext_resource type="Resource" uid="uid://bm0xllh3ul1ug" path="res://data/spam/nonsense.tres" id="30_13lpf"]
+[ext_resource type="Resource" uid="uid://brx7q64e0os43" path="res://data/spam/sale.tres" id="31_nde1x"]
+
+[sub_resource type="Resource" id="Resource_plb6b"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("3_k5g8n")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_ynvfx"]
 script = ExtResource("1_dpyoj")
@@ -22,20 +44,46 @@ metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_aowjf"]
 script = ExtResource("1_dpyoj")
-mails = Array[ExtResource("2_h8oor")]([ExtResource("3_v62xa"), ExtResource("4_kg15b"), ExtResource("5_dkiy7"), ExtResource("5_h8oor")])
+mails = Array[ExtResource("2_h8oor")]([ExtResource("4_spmm8"), ExtResource("3_v62xa"), ExtResource("4_kg15b"), ExtResource("5_dkiy7"), ExtResource("5_h8oor"), ExtResource("9_qdo4l")])
 metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_pb6sh"]
 script = ExtResource("1_dpyoj")
-mails = Array[ExtResource("2_h8oor")]([ExtResource("8_jjg1t"), ExtResource("9_cvnul"), ExtResource("7_ibbog"), ExtResource("11_6i66t"), ExtResource("8_3dnqp")])
+mails = Array[ExtResource("2_h8oor")]([ExtResource("10_vjrb2"), ExtResource("8_jjg1t"), ExtResource("9_cvnul"), ExtResource("7_ibbog"), ExtResource("14_cpq2r"), ExtResource("11_6i66t"), ExtResource("8_3dnqp"), ExtResource("17_src53")])
 metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_pr16c"]
 script = ExtResource("1_dpyoj")
-mails = Array[ExtResource("2_h8oor")]([ExtResource("13_jjg1t")])
+mails = Array[ExtResource("2_h8oor")]([ExtResource("18_plb6b"), ExtResource("19_k5g8n"), ExtResource("20_q2238"), ExtResource("21_fnl1y")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_13lpf"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("22_cpq2r"), ExtResource("23_src53"), ExtResource("24_plb6b")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_q2238"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("25_plb6b")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_k5g8n"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("26_k5g8n")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_fnl1y"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("28_q2238")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_yyfjg"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("30_13lpf"), ExtResource("31_nde1x")])
 metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [resource]
 script = ExtResource("1_8yjhw")
-pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_ynvfx"), SubResource("Resource_aowjf"), SubResource("Resource_pb6sh"), SubResource("Resource_pr16c")])
+spam = SubResource("Resource_yyfjg")
+pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_plb6b"), SubResource("Resource_ynvfx"), SubResource("Resource_aowjf"), SubResource("Resource_pb6sh"), SubResource("Resource_pr16c"), SubResource("Resource_13lpf"), SubResource("Resource_q2238"), SubResource("Resource_k5g8n"), SubResource("Resource_fnl1y")])
 metadata/_custom_type_script = "uid://dhvbdagmgqt61"

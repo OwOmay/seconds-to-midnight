@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ll3fh0yfw2ob" path="res://assets/texture/Stamp_Stamp.webp" id="3_vvc18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3h241"]
-size = Vector2(120, 124)
+size = Vector2(60, 124)
 
 [node name="Stamp" type="Area2D" unique_id=901818596]
 script = ExtResource("1_elf0m")
@@ -19,5 +19,5 @@ texture = ExtResource("3_vvc18")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1161371200]
 shape = SubResource("RectangleShape2D_3h241")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

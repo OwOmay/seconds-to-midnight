@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 func _on_button_pressed() -> void:
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://scenes/menu/main.tscn")

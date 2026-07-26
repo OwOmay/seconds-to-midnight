@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://nvlnssprwejs"]
 
 [ext_resource type="Script" uid="uid://b6ppbwkanw53u" path="res://scenes/menu/end.gd" id="1_ucsat"]
+[ext_resource type="Texture2D" uid="uid://cdb7q3b0gr72s" path="res://assets/texture/ui/Button_MENU.webp" id="2_e5i42"]
+[ext_resource type="Texture2D" uid="uid://cc26ecewaq088" path="res://assets/texture/ui/Button_MENU_hovered.png" id="2_i80w8"]
 
 [node name="End" type="Control" unique_id=393456919]
 layout_mode = 3
@@ -12,21 +14,23 @@ grow_vertical = 2
 script = ExtResource("1_ucsat")
 
 [node name="Label" type="Label" parent="." unique_id=2124433495]
-custom_minimum_size = Vector2(612, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -306.0
+offset_left = -320.0
 offset_top = 32.0
-offset_right = 306.0
+offset_right = -160.0
 offset_bottom = 81.0
 grow_horizontal = 2
-text = "the clock was unsatisfied with the world. not given enough positivity, it had self-destructed, bringing the world along with it."
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 4
+text = "The clock was unsatisfied with the world. Not given enough positivity, it had self-destructed, bringing the world along with it."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="." unique_id=1009159998]
+[node name="Button" type="TextureButton" parent="." unique_id=972182934]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,10 +39,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -63.5
 offset_top = -15.5
-offset_right = 63.5
+offset_right = 84.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "return to menu"
+texture_normal = ExtResource("2_e5i42")
+texture_hover = ExtResource("2_i80w8")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
