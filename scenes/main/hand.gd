@@ -15,7 +15,7 @@ func _on_pop() -> void:
 	$AnimatedSprite2D2.play()
 
 func _process(_delta: float) -> void:
-	$AnimatedSprite2D.frame = floori(Clock.time_remaining / 90.0 * 24.0) % 24
+	$AnimatedSprite2D.frame = floori(Clock.get_time() / 90.0 * 24.0) % 24
 	
 	position = get_viewport().get_mouse_position() - Vector2(320, 180)
 	position.x = clampf(position.x, -280, 272)
