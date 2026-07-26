@@ -19,7 +19,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _check_area(area: Area2D) -> void:
 	if "mail" in area and not deleting_nodes.has(area):
-		if area.bin_can_delete:
+		if area.bin_can_delete and not is_equal_approx(area.mail.score, 999):
 			var tween := create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC)
 			deleting_nodes[area] = tween

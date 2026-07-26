@@ -59,7 +59,12 @@ metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_13lpf"]
 script = ExtResource("1_dpyoj")
-mails = Array[ExtResource("2_h8oor")]([ExtResource("22_cpq2r"), ExtResource("23_src53"), ExtResource("24_plb6b")])
+mails = Array[ExtResource("2_h8oor")]([ExtResource("22_cpq2r"), ExtResource("23_src53")])
+metadata/_custom_type_script = "uid://dqn3b05ngv1up"
+
+[sub_resource type="Resource" id="Resource_18al5"]
+script = ExtResource("1_dpyoj")
+mails = Array[ExtResource("2_h8oor")]([ExtResource("24_plb6b")])
 metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 
 [sub_resource type="Resource" id="Resource_q2238"]
@@ -85,5 +90,5 @@ metadata/_custom_type_script = "uid://dqn3b05ngv1up"
 [resource]
 script = ExtResource("1_8yjhw")
 spam = SubResource("Resource_yyfjg")
-pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_plb6b"), SubResource("Resource_ynvfx"), SubResource("Resource_aowjf"), SubResource("Resource_pb6sh"), SubResource("Resource_pr16c"), SubResource("Resource_13lpf"), SubResource("Resource_q2238"), SubResource("Resource_k5g8n"), SubResource("Resource_fnl1y")])
+pools = Array[ExtResource("1_dpyoj")]([SubResource("Resource_plb6b"), SubResource("Resource_ynvfx"), SubResource("Resource_aowjf"), SubResource("Resource_pb6sh"), SubResource("Resource_pr16c"), SubResource("Resource_13lpf"), SubResource("Resource_18al5"), SubResource("Resource_q2238"), SubResource("Resource_k5g8n"), SubResource("Resource_fnl1y")])
 metadata/_custom_type_script = "uid://dhvbdagmgqt61"
