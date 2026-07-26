@@ -66,6 +66,10 @@ func stamp(pos: Vector2) -> void:
 		fadeout_tween.tween_callback(queue_free)
 		
 		MailManager.stamp_success.emit()
+		
+		# employee number four-two-seven
+		if is_equal_approx(mail.score, 427):
+			$"../..".win_game.emit()
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():

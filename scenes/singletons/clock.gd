@@ -14,9 +14,6 @@ func _add_time(time: float) -> void:
 	if not is_equal_approx(time, 999):
 		if is_equal_approx(time, 123):
 			time = randf() * 20 - 10
-		# employee number four-two-seven
-		if is_equal_approx(time, 427):
-			$"../Main".win_game.emit()
 		
 		var mult: float
 		if time < 0:
