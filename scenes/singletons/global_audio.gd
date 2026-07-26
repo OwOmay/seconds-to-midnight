@@ -47,7 +47,7 @@ func music_normal():
 	
 	is_music_normal = true
 	
-	$clocksong1.play($clocksong2.get_playback_position() + AudioServer.get_time_since_last_mix())
+	$clocksong1.play(fmod($clocksong2.get_playback_position(), 120) + AudioServer.get_time_since_last_mix())
 	$clocksong1.volume_linear = 0.0
 	var intro_tween := $clocksong1.create_tween()
 	intro_tween.tween_property($clocksong1, "volume_linear", music_volume, 1.0)
@@ -61,7 +61,7 @@ func music_frantic():
 	
 	is_music_normal = false
 	
-	$clocksong2.play($clocksong1.get_playback_position() + AudioServer.get_time_since_last_mix())
+	$clocksong2.play(fmod($clocksong1.get_playback_position(), 120) + AudioServer.get_time_since_last_mix())
 	$clocksong2.volume_linear = 0.0
 	var intro_tween := $clocksong2.create_tween()
 	intro_tween.tween_property($clocksong2, "volume_linear", music_volume, 1.0)

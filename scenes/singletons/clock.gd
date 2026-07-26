@@ -17,7 +17,7 @@ func _add_time(time: float) -> void:
 		
 		var mult: float
 		if time < 0:
-			mult = [0.5, 1, 1.5][difficulty]
+			mult = [0.2, 0.4, 0.8][difficulty]
 		else:
 			mult = [3, 2, 1][difficulty]
 		
