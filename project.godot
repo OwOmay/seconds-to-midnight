@@ -13,7 +13,12 @@ config_version=5
 config/name="seconds to midnight"
 run/main_scene="uid://bi008hq3tmety"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.29411766, 0.27058825, 0.21568628, 1)
+boot_splash/stretch_mode=0
+boot_splash/use_filter=false
+boot_splash/image="uid://ddidl0jdp1s8a"
+config/icon="uid://dncol2gia1lca"
+boot_splash/minimum_display_time=100
 
 [autoload]
 
