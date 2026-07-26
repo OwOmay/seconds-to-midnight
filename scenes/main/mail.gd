@@ -41,10 +41,15 @@ func _ready() -> void:
 
 func stamp(pos: Vector2) -> void:
 	if not is_stamped:
+		var img := preload("res://assets/texture/Stamp_Mark.png")
+		
+		if not (is_equal_approx(clampf(to_local(pos).x, -86 + img.get_width() * 0.5, 86 - img.get_width() * 0.5), to_local(pos).x) and is_equal_approx(clampf(to_local(pos).y, -116 + img.get_height() * 0.5, 116 - img.get_height() * 0.5), to_local(pos).y)):
+			return
+		
 		Clock.finish_time(time_took)
 		
 		var stamp_sprite := Sprite2D.new()
-		stamp_sprite.texture = preload("res://assets/texture/Stamp_Mark.png")
+		stamp_sprite.texture = img
 		add_child(stamp_sprite)
 		stamp_sprite.global_position = pos
 		is_stamped = true
