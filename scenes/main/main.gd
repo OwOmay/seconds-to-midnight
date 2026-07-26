@@ -73,10 +73,10 @@ func _process(_delta: float) -> void:
 	
 	if Clock.time_remaining < 0:
 		GlobalAudio.music_stop()
-		GlobalAudio.play("boom")
 		var fade_tween := create_tween()
 		fade_tween.set_ease(Tween.EASE_OUT)
 		fade_tween.set_trans(Tween.TRANS_CIRC)
+		fade_tween.tween_callback(GlobalAudio.play.bind("boom"))
 		fade_tween.tween_interval(3)
 		fade_tween.tween_property($CanvasModulate, "color", Color(0, 0, 0), 2.5)
 		fade_tween.tween_callback(get_tree().change_scene_to_file.bind("res://scenes/menu/end.tscn"))

@@ -13,6 +13,8 @@ signal bust
 func finish_time(time_took: float) -> void:
 	if not is_running and use_new_balance:
 		length_mod = clampf(10 / time_took, 0.5, 2)
+	elif use_new_balance:
+		length_mod = lerpf(length_mod, clampf(10 / time_took, 0.5, 2), 0.6)
 
 func get_time() -> float:
 	return time_remaining + temp_time

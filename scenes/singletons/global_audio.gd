@@ -34,8 +34,9 @@ func play_random(id: String):
 func play(id: String):
 	if has_node(id):
 		var n: AudioStreamPlayer = get_node(id)
-		n.volume_linear = sfx_volume
-		n.play()
+		if not n.playing:
+			n.volume_linear = sfx_volume
+			n.play()
 
 func music_stop():
 	$clocksong1.stop()

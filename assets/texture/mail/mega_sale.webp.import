@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxgm3blnucwf5"
-path="res://.godot/imported/mega_sale.png-6f2174973eb436f085c30854fc22ba75.ctex"
+uid="uid://brxfvv5s3gpxe"
+path="res://.godot/imported/mega_sale.webp-a2e3d8ff7a0fe3cd5f232c70e8c651d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/mail/mega_sale.png"
-dest_files=["res://.godot/imported/mega_sale.png-6f2174973eb436f085c30854fc22ba75.ctex"]
+source_file="res://assets/texture/mail/mega_sale.webp"
+dest_files=["res://.godot/imported/mega_sale.webp-a2e3d8ff7a0fe3cd5f232c70e8c651d2.ctex"]
 
 [params]
 

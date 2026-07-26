@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://di1573eo1owyq" path="res://assets/texture/ui/Button_BACK_hovered.png" id="10_aydri"]
 [ext_resource type="Texture2D" uid="uid://dd3p74q534npb" path="res://assets/texture/ui/slider.png" id="11_ll80b"]
 [ext_resource type="Texture2D" uid="uid://ddnno3mbym5nm" path="res://assets/texture/ui/Button_QUIT_hovered.png" id="12_3m0x3"]
+[ext_resource type="Texture2D" uid="uid://d3gntowesbk63" path="res://assets/texture/GMTK Logo 2026 Version.png" id="17_48fln"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yk1o"]
 content_margin_left = 0.0
@@ -391,6 +392,22 @@ made in 4 days for the 2026 gmtk game jam
 [url=\"https://en.wikipedia.org/wiki/File:Grandfather_Clock_Ticking.ogg\"]Grandfather Clock Ticking[/url], CC-BY-SA by Jud McCranie, via Wikipedia[/font_size]
 [/center]"
 fit_content = true
+
+[node name="GmtkLogo2026Version" type="TextureRect" parent="credits" unique_id=1984156517]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -56.0
+offset_right = 764.0
+offset_bottom = 894.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("17_48fln")
 
 [node name="back" type="TextureButton" parent="credits" unique_id=1830247072]
 custom_minimum_size = Vector2(77, 36)
